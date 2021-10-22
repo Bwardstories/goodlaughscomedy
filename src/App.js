@@ -1,4 +1,6 @@
 import "./App.css";
+import Home from "./views/home/Home";
+import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 
 const REDIRECT_URI = "http://localhost:3000/";
@@ -81,10 +83,10 @@ function App() {
   };
 
   return (
-    <div>
-      <button onClick={userData}>PRESS ME</button>
-      <button onClick={createEvent}>CREATE NEW EVENT</button>
-      <button onClick={getOrganizationData}>ORGANIZATION</button>
+    <div className="app">
+      <Switch>
+        <Route exact path="/" component={Home} />
+      </Switch>
     </div>
   );
 }
