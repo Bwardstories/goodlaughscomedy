@@ -1,7 +1,10 @@
 import "./App.css";
 import Home from "./views/home/Home";
+import Admin from "./views/admin/Admin";
+import Header from "./components/header/Header";
 import { Route, Switch } from "react-router-dom";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const REDIRECT_URI = "http://localhost:3000/";
 
@@ -84,8 +87,10 @@ function App() {
 
   return (
     <div className="app">
+      <Header />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/admin" component={Admin} />
       </Switch>
     </div>
   );

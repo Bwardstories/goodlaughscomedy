@@ -1,0 +1,23 @@
+.header {
+  position: fixed !important;
+  top: 0;
+  width: 100%;
+  background: rgb(180, 60, 90);
+  padding-top: 1%;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.logo_icon {
+  width: 120px;
+}
+.navbar-collapse {
+  flex-grow: 0 !important;
+}
+.navbar-expand-lg {
+  justify-content: space-between !important;
+}
+@media only screen and (max-width: 990px) {
+  .navbar {
+    flex-wrap: nowrap !important;
+  }
+}
