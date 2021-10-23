@@ -5,6 +5,7 @@ import Header from "./components/header/Header";
 import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useSelector } from "react-redux";
 
 const REDIRECT_URI = "http://localhost:3000/";
 
@@ -47,6 +48,9 @@ const body = {
 };
 
 function App() {
+  const state = useSelector(state => state);
+  console.log(state);
+
   const createEvent = async () => {
     let res = await axios.post(
       `https://www.eventbriteapi.com/v3/organizations/${organization_id}/events/`,
