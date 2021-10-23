@@ -14,7 +14,6 @@ const Carousel = () => {
         index = 0;
         return setCarouselOBJ(carouselDB[index]);
       } else {
-        console.log("working");
         index++;
         return setCarouselOBJ(carouselDB[index]);
       }
