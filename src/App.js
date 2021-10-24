@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./App.css";
 import Home from "./views/home/Home";
 import Admin from "./views/admin/Admin";
@@ -50,6 +51,7 @@ const body = {
 };
 
 function App() {
+  const [loginVisible, setLoginVisible] = useState(false);
   const createEvent = async () => {
     let res = await axios.post(
       `https://www.eventbriteapi.com/v3/organizations/${organization_id}/events/`,
@@ -91,8 +93,14 @@ function App() {
   return (
     <div className="app">
       <ToastContainer />
-      <Header />
-      <LoginModal />
+      <Header loginVisible={loginVisible} setLoginVisible={setLoginVisible} />
+      {loginVisible && (
+        <LoginModal
+          oginVisible={loginVisible}
+          setLoginVisible={setLoginVisible}
+        />
+      )}
+
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/admin" component={Admin} />
