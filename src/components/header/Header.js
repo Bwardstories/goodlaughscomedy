@@ -5,8 +5,15 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import "./header.css";
 import logo from "../../assets/images/goodlaughslogo.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actions } from "../../store/index.";
 
 const Header = () => {
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
+  const { login, logout } = bindActionCreators(actions, dispatch);
+
   return (
     <Navbar
       collapseOnSelect
