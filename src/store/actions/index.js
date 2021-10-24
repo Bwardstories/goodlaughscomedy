@@ -1,8 +1,16 @@
-export const signup = signupFormData => {
+export const login = loginFormData => {
   return dispatch => {
     dispatch({
-      type: "SIGNUP",
-      payload: signupFormData,
+      type: "LOGIN",
+      payload: loginFormData,
+    });
+  };
+};
+
+export const logout = () => {
+  return dispatch => {
+    dispatch({
+      type: "LOGOUT",
     });
   };
 };

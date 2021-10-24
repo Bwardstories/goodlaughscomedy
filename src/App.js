@@ -2,10 +2,12 @@ import "./App.css";
 import Home from "./views/home/Home";
 import Admin from "./views/admin/Admin";
 import Header from "./components/header/Header";
+import LoginModal from "./components/loginModal/LoginModal";
 import { Route, Switch } from "react-router-dom";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useSelector } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const REDIRECT_URI = "http://localhost:3000/";
 
@@ -48,9 +50,6 @@ const body = {
 };
 
 function App() {
-  const state = useSelector(state => state);
-  console.log(state);
-
   const createEvent = async () => {
     let res = await axios.post(
       `https://www.eventbriteapi.com/v3/organizations/${organization_id}/events/`,
@@ -91,7 +90,9 @@ function App() {
 
   return (
     <div className="app">
+      <ToastContainer />
       <Header />
+      <LoginModal />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/admin" component={Admin} />

@@ -1,7 +1,4 @@
 import { createStore } from "redux";
 import reducers from "./reducers/index";
 
-export const store = createStore(reducers, {
-  usernme: null,
-  email: null,
-});
+export const store = createStore(reducers, {});
