@@ -5,16 +5,12 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import "./header.css";
 import logo from "../../assets/images/goodlaughslogo.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useSelector, useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actions } from "../../store/index.";
+import { useSelector } from "react-redux";
 
 const Header = props => {
   const state = useSelector(state => state);
-  const dispatch = useDispatch();
-  const { login, logout } = bindActionCreators(actions, dispatch);
   const { loginVisible, setLoginVisible } = props;
-
+  console.log(state, "from navbar");
   return (
     <Navbar
       collapseOnSelect
@@ -26,9 +22,15 @@ const Header = props => {
         <img src={logo} alt="" className="logo_icon" />
       </a>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      {state.users.username ? (
+        <Navbar.Brand>Welcome Back {state.users.username}</Navbar.Brand>
+      ) : (
+        ""
+      )}
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link href="/admin">Admin</Nav.Link>
+          {state.users.username ? <Nav.Link href="/admin">Admin</Nav.Link> : ""}
+
           <Nav.Link href="/">Events</Nav.Link>
           <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
