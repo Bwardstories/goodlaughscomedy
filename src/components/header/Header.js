@@ -9,10 +9,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actions } from "../../store/index.";
 
-const Header = () => {
+const Header = props => {
   const state = useSelector(state => state);
   const dispatch = useDispatch();
   const { login, logout } = bindActionCreators(actions, dispatch);
+  const { loginVisible, setLoginVisible } = props;
 
   return (
     <Navbar
@@ -43,7 +44,7 @@ const Header = () => {
         </Nav>
         <Nav>
           <Nav.Link href="#deets">Image Gallery</Nav.Link>
-          <Nav.Link eventKey={2} href="#memes">
+          <Nav.Link eventKey={2} onClick={() => setLoginVisible(true)}>
             Login/Signup
           </Nav.Link>
         </Nav>
