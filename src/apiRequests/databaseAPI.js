@@ -1,11 +1,20 @@
 import axios from "axios";
 import { success, failure } from "../errorHandling/toastMessages";
 
-export const handleSignupForm = async signupFormData => {
+export const handleSignupForm = async registerFormData => {
+  const { username, password, retypePassword, email } = registerFormData;
+  console.log(username);
+  if (password.length < 8 || password.length > 20) {
+    failure("Password must be between 8 and 20 characters long");
+    return false;
+  }
+  if (password !== retypePassword) {
+    failure("Passwords do not match");
+    return false;
+  }
   axios
-    .post("http://localhost:4000/api/auth/signup", signupFormData)
+    .post("http://localhost:4000/api/auth/signup", registerFormData)
     .then(res => success(res.data.message))
-    .then(data => console.log(data))
     .catch(function (error) {
       if (error.response) {
         failure(error.response.data);

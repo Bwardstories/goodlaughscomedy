@@ -57,9 +57,22 @@ const LoginModal = props => {
       console.log(err);
     }
   };
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    handleSignupForm(registerFormData).then(setLoginVisible(false));
+    let res = await handleSignupForm(registerFormData);
+    console.log(res);
+    if (res !== false) {
+      setLoginVisible(false);
+    }
+    if (res === false) {
+      console.log("working");
+      setRegisterFormData({
+        ...registerFormData,
+        password: "",
+        retypePassword: "",
+      });
+    }
+    console.log(registerFormData);
   };
   console.log(state, "from");
   console.log(loginFormData);
