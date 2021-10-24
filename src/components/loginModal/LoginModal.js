@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { signup, login } from "../../apiRequests/databaseAPI";
+import {
+  handleSignupForm,
+  handleLoginForm,
+} from "../../apiRequests/databaseAPI";
 import "./loginModal.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useSelector, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actions } from "../../store/index.";
 
 // setting intital state for the form
 const initialState = {
@@ -18,6 +24,10 @@ const initialLogin = {
 };
 
 const LoginModal = props => {
+  const state = useSelector(state => state);
+  const dispatch = useDispatch();
+  const { login, logout } = bindActionCreators(actions, dispatch);
+
   const { loginVisible, setLoginVisible } = props;
   const [registerFormData, setRegisterFormData] = useState(initialState);
   const [loginFormData, setLoginFormData] = useState(initialLogin);
@@ -39,19 +49,33 @@ const LoginModal = props => {
 
   const handleLogin = event => {
     event.preventDefault();
-    login(loginFormData);
+    try {
+      handleLoginForm(loginFormData, login);
+      // login(loginFormData);
+      setLoginVisible(false);
+    } catch (err) {
+      console.log(err);
+    }
   };
   const handleSubmit = event => {
     event.preventDefault();
-    signup(registerFormData).then(setLoginVisible(false));
+    handleSignupForm(registerFormData).then(setLoginVisible(false));
   };
-  console.log(registerFormData);
+  console.log(state, "from");
+  console.log(loginFormData);
   return (
     <div className="overlay">
       <div className="modalContainer d-flex flex-column align-items-center justify-content-center">
-        {showLogin ? (
+        {!showLogin ? (
           <>
             <h2 className="formHeader">Login</h2>
+            <p
+              className="closeButton"
+              onClick={() => {
+                setLoginVisible(false);
+              }}>
+              X
+            </p>
             <p>
               Don't Have an Account? Register
               <span
@@ -92,10 +116,16 @@ const LoginModal = props => {
           </>
         ) : (
           <>
-            {" "}
             <h2 className="formHeader">Register</h2>
+            <p
+              className="closeButton"
+              onClick={() => {
+                setLoginVisible(false);
+              }}>
+              X
+            </p>
             <p>
-              Already have an account? Sign in{" "}
+              Already have an account? Sign in
               <span
                 className="showLogin"
                 onClick={() => {
