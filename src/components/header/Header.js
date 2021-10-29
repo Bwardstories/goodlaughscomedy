@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -14,6 +14,7 @@ const Header = props => {
   const state = useSelector(state => state);
   const dispatch = useDispatch();
   const { login, logout } = bindActionCreators(actions, dispatch);
+  const history = useHistory();
   const { loginVisible, setLoginVisible } = props;
   console.log(state, "from navbar");
   return (
@@ -95,7 +96,10 @@ const Header = props => {
                 padding: "5px",
               }}
               eventKey={2}
-              onClick={logout}>
+              onClick={() => {
+                logout();
+                history.push("/");
+              }}>
               Logout
             </p>
           )}
