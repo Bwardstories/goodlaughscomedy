@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 const REDIRECT_URI = "http://localhost:3000/";
 
+let organizer_id = "";
 let user_id = "653286012593";
 let organization_id = "653290675003";
 let MYTOKEN = process.env.REACT_APP_MY_TOKEN;
@@ -19,18 +20,18 @@ let MYTOKEN = process.env.REACT_APP_MY_TOKEN;
 const body = {
   "event": {
     "name": {
-      "html": "<p>First Test Event</p>",
+      "html": "",
     },
     "description": {
-      "html": "<p>First Test Event</p>",
+      "html": "",
     },
     "start": {
-      "timezone": "UTC",
-      "utc": "2021-10-25T02:00:00Z",
+      "timezone": "America/New_York",
+      "utc": "",
     },
     "end": {
-      "timezone": "UTC",
-      "utc": "2021-10-25T04:00:00Z",
+      "timezone": "America/New_York",
+      "utc": "",
     },
     "currency": "USD",
     "online_event": false,
@@ -39,7 +40,7 @@ const body = {
     "shareable": false,
     "invite_only": false,
     "show_remaining": true,
-    "password": "12345",
+    "password": "",
     "capacity": 100,
     "is_reserved_seating": true,
     "is_series": false,
@@ -49,6 +50,8 @@ const body = {
     "locale": "de_AT",
   },
 };
+
+let dreamers = "69172139";
 
 function App() {
   const [loginVisible, setLoginVisible] = useState(false);

@@ -1,4 +1,8 @@
 .homeWrapper {
   background-image: url("../../assets/images/bricks.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   background-attachment: fixed;
+  height: 100vh;
+  padding-top: 6%;
 }

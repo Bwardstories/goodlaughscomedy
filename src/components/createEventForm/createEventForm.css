@@ -1,0 +1,41 @@
+.createEventFormContainer {
+  text-align: center;
+  width: 35%;
+  height: 80vh;
+  margin: auto;
+  margin-top: 8%;
+}
+.createEventFormContainer label {
+  padding-bottom: 2%;
+}
+.dateWrapper {
+  display: flex;
+}
+.titleAndVenue {
+  width: 40%;
+}
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dateWrapper {
+  width: 60%;
+}
+.dates {
+  padding: 5%;
+}
+.descriptionWrapper {
+  width: 100%;
+}
+.summary {
+  width: 70%;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 2%;
+}
+.description {
+  width: 70%;
+  height: 200px;
+  padding: 10px 20px;
+}
