@@ -30,4 +30,10 @@ export const eventFormInitialState = {
   locale: "en_US",
 };
 
-export const createTicketInitialFormState = {};
+export const createTicketFormInitialState = {
+  "ticket_class": {
+    "name": "",
+    "quantity_total": 0,
+    "cost": "",
+  },
+};

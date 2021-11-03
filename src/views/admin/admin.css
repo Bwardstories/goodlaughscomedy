@@ -1,5 +1,16 @@
+.adminWrapper {
+  background: rgb(190, 190, 190);
+}
 .formComponentWrapper {
   display: flex;
   flex-grow: 1;
   justify-content: center;
+}
+.createEventButtonWrapper {
+  width: 80%;
+  height: 150px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin: auto;
 }
