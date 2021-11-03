@@ -87,36 +87,10 @@ export const createEventAPI = async eventFormData => {
   console.log(res);
 };
 
-export const retrieveAdminEvents = async filter => {
-  if (filter) {
-    return axios
-      .get(
-        `https://www.eventbriteapi.com/v3/organizations/${process.env.REACT_APP_ORG_ID}/events/?status=${filter}`,
-        {
-          headers: {
-            "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .catch(function (error) {
-        if (error.response) {
-          failure(error.response.data.error_description);
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          console.log(error.request);
-        } else {
-          console.log("Error", error.message);
-        }
-        console.log(error.config);
-      });
-  }
-
+export const retrieveAdminEvents = () => {
   return axios
     .get(
-      `https://www.eventbriteapi.com/v3/organizations/${process.env.REACT_APP_ORG_ID}/events/`,
+      `https://www.eventbriteapi.com/v3/organizations/${process.env.REACT_APP_ORG_ID}/events/?expand=ticket_availability`,
       {
         headers: {
           "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
