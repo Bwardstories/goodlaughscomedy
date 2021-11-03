@@ -69,6 +69,7 @@ export const createEventAPI = async eventFormData => {
         },
       }
     )
+    .then(success("New event successfully created"))
     .catch(function (error) {
       if (error.response) {
         failure(error.response.data.error_description);
@@ -82,6 +83,92 @@ export const createEventAPI = async eventFormData => {
       }
       console.log(error.config);
     });
+
   console.log(res);
-  saveEventToDB(res);
+};
+
+export const retrieveAdminEvents = async filter => {
+  if (filter) {
+    return axios
+      .get(
+        `https://www.eventbriteapi.com/v3/organizations/${process.env.REACT_APP_ORG_ID}/events/?status=${filter}`,
+        {
+          headers: {
+            "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .catch(function (error) {
+        if (error.response) {
+          failure(error.response.data.error_description);
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+      });
+  }
+
+  return axios
+    .get(
+      `https://www.eventbriteapi.com/v3/organizations/${process.env.REACT_APP_ORG_ID}/events/`,
+      {
+        headers: {
+          "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    .catch(function (error) {
+      if (error.response) {
+        failure(error.response.data.error_description);
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log("Error", error.message);
+      }
+      console.log(error.config);
+    });
+};
+
+export const createTickets = (event_id, ticketData) => {
+  const { cost, name, quantity_total } = ticketData;
+  return axios
+    .post(
+      `https://www.eventbriteapi.com/v3/events/${event_id}/ticket_classes/`,
+      {
+        "ticket_class": {
+          "name": name,
+          "quantity_total": quantity_total,
+          "cost": `USD,${cost}00`,
+        },
+      },
+      {
+        headers: {
+          "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    .catch(function (error) {
+      if (error.response) {
+        failure(error.response.data.error_description);
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log("Error", error.message);
+      }
+      console.log(error.config);
+    });
 };

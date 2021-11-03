@@ -1,0 +1,28 @@
+.adminEventCardWrapper {
+  border: 2px solid black;
+  box-shadow: 8px 8px 6px black;
+  text-align: center;
+  height: 300px;
+  width: 304px;
+  margin: 2%;
+  background: white;
+  position: relative;
+}
+.adminEventCardWrapper:hover {
+  transform: scale(1.2);
+}
+.adminEventImage {
+  width: 300px;
+  height: 150px;
+}
+.createTicketsButton {
+  background-color: rgb(31, 197, 87) !important;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border: none !important;
+  color: black !important;
+}
+.createTicketsButton:hover {
+  background-color: rgb(55, 238, 116) !important;
+}

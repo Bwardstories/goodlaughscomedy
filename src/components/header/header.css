@@ -6,6 +6,7 @@
   padding-top: 1%;
   padding-left: 3%;
   padding-right: 3%;
+  z-index: 1;
 }
 .logo_icon {
   width: 120px;
