@@ -1,0 +1,17 @@
+.sidebarFilter {
+  width: 250px;
+  height: 100vh;
+  background: rgb(124, 178, 230);
+  padding-top: 11.5%;
+}
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.filterContainer div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+}
