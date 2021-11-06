@@ -13,18 +13,10 @@ export const createEventAPI = async eventFormData => {
     end_time,
     hide_start_date,
     hide_end_date,
-    logo_id,
     venue_id,
-    format_id,
-    subcategory_id,
-    llisted,
-    shareable,
-    capacity,
-    source,
   } = eventFormData;
-
-  let res = await axios
-    .post(
+  try {
+    let res = await axios.post(
       `https://www.eventbriteapi.com/v3/organizations/${process.env.REACT_APP_ORG_ID}/events/`,
       {
         "event": {
@@ -32,7 +24,7 @@ export const createEventAPI = async eventFormData => {
             "html": `<p>${name}</p>`,
           },
           "description": {
-            "html": `<p>${description}</p>`,
+            "html": `<b>${summary}</b>`,
           },
           "start": {
             "timezone": "America/New_York",
@@ -68,23 +60,18 @@ export const createEventAPI = async eventFormData => {
           "Content-Type": "application/json",
         },
       }
-    )
-    .then(success("New event successfully created"))
-    .catch(function (error) {
-      if (error.response) {
-        failure(error.response.data.error_description);
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        console.log(error.request);
-      } else {
-        console.log("Error", error.message);
-      }
-      console.log(error.config);
-    });
-
-  console.log(res);
+    );
+    success("Event Created Successfully");
+    return res;
+  } catch (error) {
+    console.log(error);
+    if (error.response) {
+      console.log(error.response);
+      failure(error.response.data.error_description);
+    } else {
+      throw error;
+    }
+  }
 };
 
 export const retrieveAdminEvents = () => {
@@ -113,8 +100,8 @@ export const retrieveAdminEvents = () => {
     });
 };
 
-export const createTickets = (event_id, ticketData) => {
-  const { cost, name, quantity_total } = ticketData;
+export const createTickets = ticketData => {
+  const { cost, name, quantity_total, event_id } = ticketData;
   return axios
     .post(
       `https://www.eventbriteapi.com/v3/events/${event_id}/ticket_classes/`,

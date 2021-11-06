@@ -6,14 +6,14 @@ import "./adminEventDisplay.css";
 const AdminEventDisplay = props => {
   const { creatingTickets, setCreatingTickets, eventArray } = props;
 
-  console.log(eventArray);
   return (
     <div className="adminCardsContainer">
       {eventArray
-        ? eventArray.map(event => {
+        ? eventArray.map((event, index) => {
             return (
               <AdminEventCard
                 event={event}
+                key={index}
                 creatingTickets={creatingTickets}
                 setCreatingTickets={setCreatingTickets}
               />

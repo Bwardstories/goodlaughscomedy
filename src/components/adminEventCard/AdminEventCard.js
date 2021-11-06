@@ -9,13 +9,6 @@ import "./adminEventCard.css";
 const AdminEventCard = props => {
   const { event, creatingTickets, setCreatingTickets } = props;
 
-  console.log(event);
-
-  const handleCreateTicket = (e, event_id) => {
-    e.preventDefault();
-    createTickets(event_id);
-  };
-
   return (
     <div className="adminEventCardWrapper">
       {event.logo ? (

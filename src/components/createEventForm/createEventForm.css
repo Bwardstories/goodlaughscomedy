@@ -1,12 +1,39 @@
 .createEventFormContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
   width: 35%;
-  height: 80vh;
-  margin: auto;
-  margin-top: 8%;
+  height: 65vh;
+  background: white;
+  z-index: 4;
+}
+.eventFormOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 3;
 }
 .createEventFormContainer label {
   padding-bottom: 2%;
+}
+.closeEventFormButton {
+  position: absolute;
+  font-size: 2.5rem;
+  top: 0;
+  right: 20px;
+  cursor: pointer;
+  color: black;
+}
+.closeEventFormButton:hover {
+  color: red;
 }
 .dateWrapper {
   display: flex;

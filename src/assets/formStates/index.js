@@ -32,6 +32,7 @@ export const eventFormInitialState = {
 
 export const createTicketFormInitialState = {
   "ticket_class": {
+    "event_id": "",
     "name": "",
     "quantity_total": 0,
     "cost": "",
