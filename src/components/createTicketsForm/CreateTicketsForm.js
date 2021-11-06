@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createTicketFormInitialState } from "../../assets/formStates/index";
 import { createTickets } from "../../apiRequests/eventBriteApi";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./createTicketsForm.css";
 
-const CreateTicketsForm = () => {
+const CreateTicketsForm = props => {
+  const { createTicketsArray, setCreateTicketsArray, setCreatingTickets } =
+    props;
   const [createTicketFormData, setCreateTicketFormData] = useState(
     createTicketFormInitialState
   );
@@ -21,44 +23,129 @@ const CreateTicketsForm = () => {
   };
 
   const handleSubmit = e => {
-    createTickets(event_id, createTicketFormData);
+    console.log(createTicketFormData);
+    createTickets(createTicketFormData);
+    localStorage.clear();
   };
-  console.log(createTicketFormInitialState, createTicketFormData);
+  console.log(createTicketFormData);
 
+  useEffect(() => {
+    if (localStorage.getItem("event_id") && localStorage.getItem("name")) {
+      setCreateTicketFormData({
+        ...createTicketFormData,
+        event_id: event_id,
+        name: name,
+      });
+    }
+  }, []);
+
+  console.log(createTicketFormData);
   return (
-    <div className="modalOverlay">
-      <div className="ticketFormWrapper">
-        <h2>Creating tickets for {name}</h2>
-        <label htmlFor="name">Ticket Class Name: </label>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name example: General Admission"
-          onChange={e => {
-            handleFormChange(e);
-          }}
-        />
-        <label htmlFor="quantity_total">How many tickets?</label>
-        <input
-          type="number"
-          name="quantity_total"
-          onChange={e => {
-            handleFormChange(e);
-          }}
-        />
-        <label htmlFor="cost">Total Cost for Each Ticket:</label>
-        <input
-          type="number"
-          name="cost"
-          className="ticketCost"
-          id="cost"
-          onChange={e => {
-            handleFormChange(e);
-          }}
-        />
-        <Button onClick={e => handleSubmit(e)}>Submit</Button>
-      </div>
-    </div>
+    <>
+      {createTicketsArray.length > 0 ? (
+        <>
+          <div
+            className="modalOverlay"
+            onClick={() => setCreatingTickets(false)}>
+            {" "}
+          </div>
+          <div className="ticketFormWrapper">
+            <p
+              className="ticketFormCloseButton"
+              onClick={() => setCreatingTickets(false)}>
+              x
+            </p>
+            <h2>Creating Tickets</h2>
+            <label htmlFor="eventName">
+              Please select an event to make tickets for
+            </label>
+            <select
+              name="event_id"
+              id=""
+              onChange={e => {
+                handleFormChange(e);
+              }}>
+              <option value=""></option>
+              {createTicketsArray.map(event => (
+                <option value={event.id}>{event.name.html}</option>
+              ))}
+            </select>
+            <label htmlFor="name">Ticket Class Name: </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name example: General Admission"
+              onChange={e => {
+                handleFormChange(e);
+              }}
+            />
+            <label htmlFor="quantity_total">How many tickets?</label>
+            <input
+              type="number"
+              name="quantity_total"
+              onChange={e => {
+                handleFormChange(e);
+              }}
+            />
+            <label htmlFor="cost">Total Cost for Each Ticket:</label>
+            <input
+              type="number"
+              name="cost"
+              className="ticketCost"
+              id="cost"
+              onChange={e => {
+                handleFormChange(e);
+              }}
+            />
+            <Button onClick={e => handleSubmit(e)}>Submit</Button>
+          </div>
+        </>
+      ) : (
+        <>
+          <div
+            className="modalOverlay"
+            onClick={() => setCreatingTickets(false)}>
+            {" "}
+          </div>
+          <div className="ticketFormWrapper">
+            <p
+              className="ticketFormCloseButton"
+              onClick={() => setCreatingTickets(false)}>
+              x
+            </p>
+            <h2>Creating tickets for {createTicketFormData.name}</h2>
+            <label htmlFor="name">Ticket Class Name: </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name example: General Admission"
+              onChange={e => {
+                handleFormChange(e);
+              }}
+            />
+            <label htmlFor="quantity_total">How many tickets?</label>
+            <input
+              type="number"
+              name="quantity_total"
+              onChange={e => {
+                handleFormChange(e);
+              }}
+            />
+            <label htmlFor="cost">Total Cost for Each Ticket:</label>
+            <input
+              type="number"
+              name="cost"
+              className="ticketCost"
+              id="cost"
+              onChange={e => {
+                handleFormChange(e);
+              }}
+            />
+            <Button onClick={e => handleSubmit(e)}>Submit</Button>
+          </div>
+        </>
+      )}
+    </>
   );
 };
 

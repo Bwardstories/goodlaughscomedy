@@ -1,8 +1,17 @@
 .adminCardsContainer {
   display: flex;
-  width: 80%;
-  max-height: 78vh;
+  width: 90%;
+  max-height: 100vh;
+  padding-top: 4.6%;
   flex-wrap: wrap;
-  margin-top: 10%;
   overflow-y: scroll;
+}
+.adminCardsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.adminCardsContainer {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

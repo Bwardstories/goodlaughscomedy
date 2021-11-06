@@ -2,7 +2,7 @@
   width: 250px;
   height: 100vh;
   background: rgb(124, 178, 230);
-  padding-top: 11.5%;
+  padding-top: 6%;
 }
 .filterContainer {
   display: flex;
@@ -13,5 +13,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100px;
+  width: 150px;
+}
+#editEventList li {
+  list-style: none;
+  cursor: pointer;
+}
+#editEventList li:hover {
+  color: white;
+  transform: scale(1.2);
+}
+.checkbox {
+  cursor: pointer;
 }

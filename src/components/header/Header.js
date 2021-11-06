@@ -16,7 +16,7 @@ const Header = props => {
   const { login, logout } = bindActionCreators(actions, dispatch);
   const history = useHistory();
   const { loginVisible, setLoginVisible } = props;
-  console.log(state, "from navbar");
+
   return (
     <Navbar
       collapseOnSelect
