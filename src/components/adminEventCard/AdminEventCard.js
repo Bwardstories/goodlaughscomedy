@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import uploadImage from "../../assets/images/uploadImage.jpg";
+import DateDisplay from "../dateDisplay/DateDisplay";
 import CreateTicketsForm from "../createTicketsForm/CreateTicketsForm";
 import { createTickets } from "../../apiRequests/eventBriteApi";
 import Button from "react-bootstrap/Button";
@@ -9,6 +10,8 @@ import "./adminEventCard.css";
 const AdminEventCard = props => {
   const { event, creatingTickets, setCreatingTickets } = props;
 
+  const startTime = new Date(event.start.local);
+  console.log(event);
   return (
     <div className="adminEventCardWrapper">
       {event.logo ? (
@@ -18,7 +21,6 @@ const AdminEventCard = props => {
       )}
       <span>{event.name.html}</span>
       <br />
-      Start Time: <span>{event.start.local}</span>
       {event.is_free ? (
         <Button
           className="createTicketsButton"
@@ -33,6 +35,11 @@ const AdminEventCard = props => {
       ) : (
         ""
       )}
+      <DateDisplay
+        startTime={startTime}
+        // passing in classname dynamically to alter the positioning of the DateDisplay component
+        dynamicClassName="adminEventCardDate"
+      />
     </div>
   );
 };
