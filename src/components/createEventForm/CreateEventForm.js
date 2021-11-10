@@ -172,7 +172,7 @@ const CreateEventForm = props => {
             </label>
           </div>
           <div className="descriptionWrapper">
-            <h2>Event Description</h2>
+            <h2>Event Summary</h2>
             <input
               className="summary"
               type="text"
