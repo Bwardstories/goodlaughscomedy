@@ -12,21 +12,37 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Admin = () => {
   const state = useSelector(state => state);
-  const [eventArray, setEventArray] = useState([]);
   const [filteredArray, setFilteredArray] = useState([]);
   const [createTicketFormData, setCreateTicketFormData] = useState();
-  const [publishing, setPublishing] = useState(false);
-  const [creatingTickets, setCreatingTickets] = useState(false);
+  // state to control rendering of create event form
   const [creatingEvent, setCreatingEvent] = useState(false);
+  // state that holds the inital event array with all events.
+  const [eventArray, setEventArray] = useState([]);
+  // state to control rendering of create tickets form
+  const [creatingTickets, setCreatingTickets] = useState(false);
+  // state for array of events that need tickets made
   const [createTicketsArray, setCreateTicketsArray] = useState([]);
+  // state to control rendering of publishing form
+  const [publishing, setPublishing] = useState(false);
+  // state for the array of events that need to be published
+  const [publishingArray, setPublishingArray] = useState({});
+  // useEffect to set the inital event array when the admin dashboard is mounted
+
+  const currentDay = new Date();
+
   useEffect(() => {
     async function fetchData() {
       let res = await retrieveAdminEvents();
-      setEventArray(res.data.events);
+      let filteredArray = res.data.events.filter(event => {
+        let eventStart = new Date(event.start.local);
+        return currentDay.getTime() < eventStart.getTime();
+      });
+      console.log(res.data);
+      setEventArray(filteredArray);
     }
     fetchData();
   }, []);
-  console.log(createTicketsArray);
+  console.log(eventArray);
   return (
     <div className="adminWrapper">
       {creatingEvent ? (
@@ -38,6 +54,7 @@ const Admin = () => {
       )}
       <div className="displayWrapper">
         <AdminSidebar
+          setPublishingArray={setPublishingArray}
           setPublishing={setPublishing}
           createTicketsArray={createTicketsArray}
           setCreateTicketsArray={setCreateTicketsArray}
@@ -64,7 +81,8 @@ const Admin = () => {
       )}
       {publishing ? (
         <PublishEventForm
-          eventArray={eventArray}
+          publishingArray={publishingArray}
+          setPublishingArray={setPublishingArray}
           setPublishing={setPublishing}
         />
       ) : (

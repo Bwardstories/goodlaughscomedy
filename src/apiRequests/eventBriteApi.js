@@ -6,7 +6,6 @@ export const createEventAPI = async eventFormData => {
   const {
     name,
     summary,
-    description,
     start,
     start_time,
     end,
@@ -100,16 +99,19 @@ export const retrieveAdminEvents = () => {
     });
 };
 
-export const createTickets = ticketData => {
+export const createTickets = async ticketData => {
   const { cost, name, quantity_total, event_id } = ticketData;
-  return axios
-    .post(
+
+  let wholeCost = Math.trunc(cost);
+
+  try {
+    let res = await axios.post(
       `https://www.eventbriteapi.com/v3/events/${event_id}/ticket_classes/`,
       {
         "ticket_class": {
           "name": name,
           "quantity_total": quantity_total,
-          "cost": `USD,${cost}00`,
+          "cost": `USD,${wholeCost}00`,
         },
       },
       {
@@ -118,18 +120,94 @@ export const createTickets = ticketData => {
           "Content-Type": "application/json",
         },
       }
-    )
-    .catch(function (error) {
-      if (error.response) {
-        failure(error.response.data.error_description);
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        console.log(error.request);
-      } else {
-        console.log("Error", error.message);
-      }
-      console.log(error.config);
+    );
+    success("Tickets for this event have been made successfully");
+    return res;
+  } catch (error) {
+    if (error.response) {
+      failure(error.response.data.error_description);
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    } else if (error.request) {
+      console.log(error.request);
+    } else {
+      console.log("Error", error.message);
+    }
+    console.log(error.config);
+  }
+};
+
+export const publishEvent = publishFormData => {
+  const { description, event_id } = publishFormData;
+  console.log(description);
+  let modules = [];
+  let textArray = description.split("\n\n");
+
+  textArray.map(text => {
+    modules.push({
+      "data": {
+        "body": {
+          "alignment": "left",
+          "text": text,
+        },
+      },
+      "type": "text",
     });
+    return modules;
+  });
+  console.log(modules);
+
+  try {
+    axios
+      .all([
+        axios.post(
+          `https://www.eventbriteapi.com/v3/events/${event_id}/structured_content/1/`,
+          {
+            "access_type": "private",
+            modules,
+            "publish": true,
+          },
+          {
+            headers: {
+              "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+              "Content-Type": "application/json",
+            },
+          }
+        ),
+        axios.post(
+          `https://www.eventbriteapi.com/v3/events/${event_id}/publish/`,
+          {},
+          {
+            headers: {
+              "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+              "Content-Type": "application/json",
+            },
+          }
+        ),
+        axios.post(
+          `https://www.eventbriteapi.com/v3/events/${event_id}/`,
+          {
+            event: {
+              "shareable": true,
+              "listed": true,
+            },
+          },
+          {
+            headers: {
+              "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+              "Content-Type": "application/json",
+            },
+          }
+        ),
+      ])
+      .then(
+        axios.spread((firstResponse, secondResponse) => {
+          console.log(firstResponse.data, secondResponse.data);
+          success("you have published your event successfully");
+        })
+      );
+  } catch (err) {
+    failure(err.message);
+  }
 };

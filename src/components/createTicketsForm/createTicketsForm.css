@@ -20,6 +20,7 @@
   background: white;
   text-align: center;
   padding: 15px;
+  padding-top: 40px;
   z-index: 4;
 }
 .ticketFormCloseButton {

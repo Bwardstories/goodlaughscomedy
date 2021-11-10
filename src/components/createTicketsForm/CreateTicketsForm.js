@@ -22,10 +22,15 @@ const CreateTicketsForm = props => {
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     console.log(createTicketFormData);
-    createTickets(createTicketFormData);
-    localStorage.clear();
+    let res = await createTickets(createTicketFormData);
+    if (!res) {
+      return;
+    } else {
+      localStorage.clear();
+      setCreatingTickets(false);
+    }
   };
   console.log(createTicketFormData);
 
@@ -46,13 +51,20 @@ const CreateTicketsForm = props => {
         <>
           <div
             className="modalOverlay"
-            onClick={() => setCreatingTickets(false)}>
+            onClick={() => {
+              localStorage.clear();
+              setCreatingTickets(false);
+            }}>
             {" "}
           </div>
           <div className="ticketFormWrapper">
             <p
               className="ticketFormCloseButton"
-              onClick={() => setCreatingTickets(false)}>
+              onClick={() => {
+                localStorage.clear();
+                setCreateTicketsArray([]);
+                setCreatingTickets(false);
+              }}>
               x
             </p>
             <h2>Creating Tickets</h2>
@@ -104,13 +116,17 @@ const CreateTicketsForm = props => {
         <>
           <div
             className="modalOverlay"
-            onClick={() => setCreatingTickets(false)}>
-            {" "}
-          </div>
+            onClick={() => {
+              localStorage.clear();
+              setCreatingTickets(false);
+            }}></div>
           <div className="ticketFormWrapper">
             <p
               className="ticketFormCloseButton"
-              onClick={() => setCreatingTickets(false)}>
+              onClick={() => {
+                localStorage.clear();
+                setCreatingTickets(false);
+              }}>
               x
             </p>
             <h2>Creating tickets for {createTicketFormData.name}</h2>
