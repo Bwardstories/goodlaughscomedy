@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { failure, success } from "../../errorHandling/toastMessages";
 import "./adminSidebar.css";
 
 let tempArray = [];
@@ -11,9 +12,8 @@ const AdminSidebar = props => {
     setCreatingTickets,
     setCreateTicketsArray,
     setPublishing,
+    setPublishingArray,
   } = props;
-
-  const [clicks, setClicks] = useState(0);
 
   const filterData = [
     {
@@ -124,7 +124,12 @@ const AdminSidebar = props => {
     }
   };
 
-  const isPublishedFilter = () => {};
+  const needsToBePublished = () => {
+    let needsPublishedArray = hasTicketsFilter();
+    let tmpArray = needsPublishedArray.filter(event => event.status !== "live");
+    console.log(needsPublishedArray);
+    return tmpArray;
+  };
 
   const handleFilter = async () => {
     let res = await handleIsChecked();
@@ -151,10 +156,6 @@ const AdminSidebar = props => {
     resetCheckboxes();
   };
 
-  const createTicketsStart = async () => {
-    setCreateTicketsArray(needsTicketsFilter());
-  };
-
   return (
     <div className="sidebarFilter">
       <div className="filterContainer">
@@ -170,12 +171,18 @@ const AdminSidebar = props => {
           </li>
           <li
             onClick={() => {
-              createTicketsStart();
+              setCreateTicketsArray(needsTicketsFilter());
               setCreatingTickets(true);
             }}>
             Create Tickets
           </li>
-          <li onClick={() => setPublishing(true)}>Publish Event</li>
+          <li
+            onClick={() => {
+              setPublishingArray(needsToBePublished);
+              setPublishing(true);
+            }}>
+            Publish Event
+          </li>
         </ul>
         <div>
           {" "}

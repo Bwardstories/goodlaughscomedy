@@ -9,11 +9,17 @@
 }
 .publishEventWrapper {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 600px;
+  height: 500px;
   width: 700px;
+  padding: 2%;
+  text-align: center;
   background: white;
   z-index: 4;
 }
@@ -23,4 +29,15 @@
   right: 20px;
   color: black;
   font-size: 2rem;
+  cursor: pointer;
+}
+.publishEventCloseButton:hover {
+  color: red;
+}
+#chooseEvent {
+  width: 50%;
+  margin: 10px;
+}
+#eventDescription {
+  margin: 10px;
 }
