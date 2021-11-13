@@ -9,6 +9,8 @@ const AdminSidebar = props => {
     eventArray,
     setFilteredArray,
     setCreatingEvent,
+    setEditingTickets,
+    setEventsWithTicketsToEditArray,
     setCreatingTickets,
     setCreateTicketsArray,
     setPublishing,
@@ -166,20 +168,32 @@ const AdminSidebar = props => {
           <li
             onClick={() => {
               setCreatingEvent(true);
+              setEditingTickets(false);
             }}>
             Create New Event
           </li>
           <li
             onClick={() => {
+              tempArray = [];
               setCreateTicketsArray(needsTicketsFilter());
               setCreatingTickets(true);
+              setEditingTickets(false);
             }}>
             Create Tickets
           </li>
           <li
             onClick={() => {
+              setEventsWithTicketsToEditArray(hasTicketsFilter());
+              setEditingTickets(true);
+            }}>
+            Edit Tickets
+          </li>
+          <li
+            onClick={() => {
+              tempArray = [];
               setPublishingArray(needsToBePublished);
               setPublishing(true);
+              setEditingTickets(false);
             }}>
             Publish Event
           </li>
@@ -219,7 +233,7 @@ const AdminSidebar = props => {
             value={3}
           />
           <label htmlFor="ticket_availability.has_available_tickets">
-            Edit Tickets
+            Has Tickets
           </label>
         </div>
         <div>

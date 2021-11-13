@@ -40,7 +40,6 @@ const CreateEventForm = props => {
     }
   };
 
-  console.log(createEventFormData);
   return (
     <>
       <div className="eventFormOverlay"></div>
