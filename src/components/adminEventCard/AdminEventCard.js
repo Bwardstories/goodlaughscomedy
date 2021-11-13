@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import uploadImage from "../../assets/images/uploadImage.jpg";
 import DateDisplay from "../dateDisplay/DateDisplay";
-import CreateTicketsForm from "../createTicketsForm/CreateTicketsForm";
-import { createTickets } from "../../apiRequests/eventBriteApi";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./adminEventCard.css";
 
 const AdminEventCard = props => {
-  const { event, creatingTickets, setCreatingTickets } = props;
+  const { event, setCreatingTickets } = props;
 
   const startTime = new Date(event.start.local);
-  console.log(event);
+
   return (
     <div className="adminEventCardWrapper">
       {event.logo ? (

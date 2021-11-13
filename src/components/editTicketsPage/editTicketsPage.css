@@ -1,0 +1,71 @@
+.editTicketsPageWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-height: 100vh;
+  margin-top: 4.6%;
+  padding-top: 15px;
+  flex-wrap: wrap;
+  background: white;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+.editTicketsEventSelectionWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 30px 1%;
+  border-bottom: 2px solid black;
+}
+#editTicketsOptions {
+  margin-left: 20px;
+  margin-top: 2px;
+}
+.editTicketsAPIButton {
+  margin-left: 20px;
+  margin-top: -1px;
+}
+.editTicketCardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 10px 0 10px 20px;
+  margin-top: 2%;
+}
+.ticketCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(111, 240, 233);
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 80%;
+  height: 100px;
+  margin-top: 2%;
+  padding: 8px 15px 8px 15px;
+}
+.ticketCard:hover {
+  box-shadow: 6px 6px 16px yellow;
+}
+.ticketSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ticketFont {
+  font-size: 2rem;
+}
+.ticketSection .btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 30px;
+}
+.addTicketButton {
+  margin-top: 2%;
+  width: 160px !important;
+  align-self: center;
+}
+.ticketClassName {
+  width: 400px;
+}

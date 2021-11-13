@@ -32,7 +32,6 @@ const CreateTicketsForm = props => {
       setCreatingTickets(false);
     }
   };
-  console.log(createTicketFormData);
 
   useEffect(() => {
     if (localStorage.getItem("event_id") && localStorage.getItem("name")) {
@@ -44,7 +43,6 @@ const CreateTicketsForm = props => {
     }
   }, []);
 
-  console.log(createTicketFormData);
   return (
     <>
       {createTicketsArray.length > 0 ? (
@@ -54,9 +52,7 @@ const CreateTicketsForm = props => {
             onClick={() => {
               localStorage.clear();
               setCreatingTickets(false);
-            }}>
-            {" "}
-          </div>
+            }}></div>
           <div className="ticketFormWrapper">
             <p
               className="ticketFormCloseButton"

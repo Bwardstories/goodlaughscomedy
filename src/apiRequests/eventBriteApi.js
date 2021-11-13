@@ -211,3 +211,26 @@ export const publishEvent = publishFormData => {
     failure(err.message);
   }
 };
+
+export const retrieveTicketListApi = async event_id => {
+  try {
+    let res = await axios.get(
+      `https://www.eventbriteapi.com/v3/events/${event_id}/ticket_classes/`,
+      {
+        headers: {
+          "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return res;
+  } catch (error) {
+    console.log(error);
+    if (error.response) {
+      console.log(error.response);
+      failure(error.response.data.error_description);
+    } else {
+      throw error;
+    }
+  }
+};
