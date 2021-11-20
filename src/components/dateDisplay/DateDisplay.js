@@ -1,9 +1,8 @@
 import React from "react";
 import "./dateDisplay.css";
 
-const DateDisplay = props => {
+const DateDisplay = ({ startTime, dynamicClassName }) => {
   // imports start time and class props. the class prop will dynamically assign the class depending on where the date is rendered, to alter it's positioning.
-  const { startTime, dynamicClassName } = props;
 
   //   formats day from sartTime string
   const day = startTime.toLocaleString("en-US", {
