@@ -6,7 +6,7 @@ const DateDisplay = ({ startTime, dynamicClassName }) => {
 
   //   formats day from sartTime string
   const day = startTime.toLocaleString("en-US", {
-    weekday: "short",
+    weekday: "long",
   });
   // formats month from startTime string
   const month = startTime.toLocaleString("en-US", {
@@ -24,14 +24,15 @@ const DateDisplay = ({ startTime, dynamicClassName }) => {
   const time = startTime.toLocaleString("en-US", {
     hour: "numeric",
     minute: "numeric",
+    timeZoneName: "short",
   });
 
   return (
     <>
       <div className={dynamicClassName}>
+        <div className="calendarDayWrapper">{day}</div>
         <div className="calendarMonthWrapper">{month}</div>
         <div className="calendarDateWrapper">{date}</div>
-        <div className="calendarDayWrapper">{day}</div>
         <div className="calendarTimeWrapper">{time}</div>
       </div>
     </>

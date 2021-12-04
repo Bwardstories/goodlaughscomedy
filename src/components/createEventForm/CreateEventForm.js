@@ -39,7 +39,7 @@ const CreateEventForm = props => {
       setCreatingEvent(false);
     }
   };
-
+  console.log(createEventFormData);
   return (
     <>
       <div className="eventFormOverlay"></div>
@@ -85,31 +85,31 @@ const CreateEventForm = props => {
               <label htmlFor="start_time">Start Time</label>
               <select name="start_time" onChange={e => handleFormChange(e)}>
                 <option value=""></option>
-                <option value="16:00:00">12:00 PM</option>
-                <option value="16:30:00">12:30 PM</option>
-                <option value="17:00:00">01:00 PM</option>
-                <option value="17:30:00">01:30 PM</option>
-                <option value="18:00:00">02:00 PM</option>
-                <option value="18:30:00">02:30 PM</option>
-                <option value="19:00:00">03:00 PM</option>
-                <option value="19:30:00">03:30 PM</option>
-                <option value="20:00:00">04:00 PM</option>
-                <option value="20:30:00">04:30 PM</option>
-                <option value="21:00:00">05:00 PM</option>
-                <option value="21:30:00">05:30 PM</option>
-                <option value="22:00:00">06:00 PM</option>
-                <option value="22:30:00">06:30 PM</option>
-                <option value="23:00:00">07:00 PM</option>
-                <option value="23:30:00">07:30 PM</option>
-                <option value="00:00:00">08:00 PM</option>
-                <option value="00:30:00">08:30 PM</option>
-                <option value="01:00:00">09:00 PM</option>
-                <option value="01:30:00">09:30 PM</option>
-                <option value="02:00:00">10:00 PM</option>
-                <option value="02:30:00">10:30 PM</option>
-                <option value="03:00:00">11:00 PM</option>
-                <option value="03:30:00">11:30 PM</option>
-                <option value="04:00:00">12:00 AM</option>
+                <option value="12:00:00">12:00 PM</option>
+                <option value="12:30:00">12:30 PM</option>
+                <option value="13:00:00">01:00 PM</option>
+                <option value="13:30:00">01:30 PM</option>
+                <option value="14:00:00">02:00 PM</option>
+                <option value="14:30:00">02:30 PM</option>
+                <option value="15:00:00">03:00 PM</option>
+                <option value="15:30:00">03:30 PM</option>
+                <option value="16:00:00">04:00 PM</option>
+                <option value="16:30:00">04:30 PM</option>
+                <option value="17:00:00">05:00 PM</option>
+                <option value="17:30:00">05:30 PM</option>
+                <option value="18:00:00">06:00 PM</option>
+                <option value="18:30:00">06:30 PM</option>
+                <option value="19:00:00">07:00 PM</option>
+                <option value="19:30:00">07:30 PM</option>
+                <option value="20:00:00">08:00 PM</option>
+                <option value="20:30:00">08:30 PM</option>
+                <option value="21:00:00">09:00 PM</option>
+                <option value="21:30:00">09:30 PM</option>
+                <option value="22:00:00">10:00 PM</option>
+                <option value="22:30:00">10:30 PM</option>
+                <option value="23:00:00">11:00 PM</option>
+                <option value="23:30:00">11:30 PM</option>
+                <option value="00:00:00">12:00 AM</option>
               </select>
             </div>
             <div className="dates">
@@ -117,36 +117,40 @@ const CreateEventForm = props => {
               <input
                 type="date"
                 name="end"
-                onChange={e => handleFormChange(e)}
+                onChange={e => {
+                  handleFormChange(e);
+                  console.log(new Date(e.target.value));
+                  console.log(e.target.value);
+                }}
               />
               <label htmlFor="end_time">End Time</label>
               <select name="end_time" onChange={e => handleFormChange(e)}>
                 <option value=""></option>
-                <option value="16:00:00">12:00 PM</option>
-                <option value="16:30:00">12:30 PM</option>
-                <option value="17:00:00">01:00 PM</option>
-                <option value="17:30:00">01:30 PM</option>
-                <option value="18:00:00">02:00 PM</option>
-                <option value="18:30:00">02:30 PM</option>
-                <option value="19:00:00">03:00 PM</option>
-                <option value="19:30:00">03:30 PM</option>
-                <option value="20:00:00">04:00 PM</option>
-                <option value="20:30:00">04:30 PM</option>
-                <option value="21:00:00">05:00 PM</option>
-                <option value="21:30:00">05:30 PM</option>
-                <option value="22:00:00">06:00 PM</option>
-                <option value="22:30:00">06:30 PM</option>
-                <option value="23:00:00">07:00 PM</option>
-                <option value="23:30:00">07:30 PM</option>
-                <option value="00:00:00">08:00 PM</option>
-                <option value="00:30:00">08:30 PM</option>
-                <option value="01:00:00">09:00 PM</option>
-                <option value="01:30:00">09:30 PM</option>
-                <option value="02:00:00">10:00 PM</option>
-                <option value="02:30:00">10:30 PM</option>
-                <option value="03:00:00">11:00 PM</option>
-                <option value="03:30:00">11:30 PM</option>
-                <option value="04:00:00">12:00 AM</option>
+                <option value="12:00:00">12:00 PM</option>
+                <option value="12:30:00">12:30 PM</option>
+                <option value="13:00:00">01:00 PM</option>
+                <option value="13:30:00">01:30 PM</option>
+                <option value="14:00:00">02:00 PM</option>
+                <option value="14:30:00">02:30 PM</option>
+                <option value="15:00:00">03:00 PM</option>
+                <option value="15:30:00">03:30 PM</option>
+                <option value="16:00:00">04:00 PM</option>
+                <option value="16:30:00">04:30 PM</option>
+                <option value="17:00:00">05:00 PM</option>
+                <option value="17:30:00">05:30 PM</option>
+                <option value="18:00:00">06:00 PM</option>
+                <option value="18:30:00">06:30 PM</option>
+                <option value="19:00:00">07:00 PM</option>
+                <option value="19:30:00">07:30 PM</option>
+                <option value="20:00:00">08:00 PM</option>
+                <option value="20:30:00">08:30 PM</option>
+                <option value="21:00:00">09:00 PM</option>
+                <option value="21:30:00">09:30 PM</option>
+                <option value="22:00:00">10:00 PM</option>
+                <option value="22:30:00">10:30 PM</option>
+                <option value="23:00:00">11:00 PM</option>
+                <option value="23:30:00">11:30 PM</option>
+                <option value="00:00:00">12:00 AM</option>
               </select>
             </div>
           </div>

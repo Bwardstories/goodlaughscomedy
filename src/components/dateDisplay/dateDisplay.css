@@ -11,14 +11,21 @@
   border-radius: 10px;
   border: 2px solid black;
 }
-.calendarMonthWrapper {
+.adminEventCardDate > .calendarMonthWrapper {
   background: orange;
   border-radius: 10px 10px 0px 0px;
 }
-.calendarDateWrapper {
+.adminEventCardDate > .calendarDateWrapper {
   font-size: 1.5rem;
   display: block;
   margin: auto;
 }
-.calendarDayWrapper {
+.liveEventCardDate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(65, 60, 60);
+  width: 12%;
+  color: white;
 }
