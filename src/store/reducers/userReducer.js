@@ -7,7 +7,7 @@ const initialState = {
 // reducer to handle login and logout action types
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    //  handles the LOGIN action by setsting the global state to the logged in user data
+    //  handles the LOGIN action by setting the global state to the logged in user data
     case "LOGIN":
       console.log(state, action);
       return {

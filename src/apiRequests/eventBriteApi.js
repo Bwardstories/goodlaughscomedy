@@ -14,6 +14,10 @@ export const createEventAPI = async eventFormData => {
     hide_end_date,
     venue_id,
   } = eventFormData;
+  // this takes the dates entered on the form and changes them from local time to utc time because that is what is required with the api
+  let startDate = new Date(`${start}T${start_time}`).toISOString().slice(0, -5);
+  let endDate = new Date(`${end}T${end_time}`).toISOString().slice(0, -5);
+  console.log(startDate, endDate);
   try {
     let res = await axios.post(
       `https://www.eventbriteapi.com/v3/organizations/${process.env.REACT_APP_ORG_ID}/events/`,
@@ -27,11 +31,11 @@ export const createEventAPI = async eventFormData => {
           },
           "start": {
             "timezone": "America/New_York",
-            "utc": `${start}T${start_time}Z`,
+            "utc": `${startDate}Z`,
           },
           "end": {
             "timezone": "America/New_York",
-            "utc": `${end}T${end_time}Z`,
+            "utc": `${endDate}Z`,
           },
           "venue_id": venue_id,
           "hide_start_date": hide_start_date,
@@ -232,5 +236,21 @@ export const retrieveTicketListApi = async event_id => {
     } else {
       throw error;
     }
+  }
+};
+
+export const getActiveEvents = () => {
+  try {
+    return axios.get(
+      `https://www.eventbriteapi.com/v3/organizations/${process.env.REACT_APP_KEITH_ORG_ID}/events/?expand=ticket_availability&order_by=start_desc`,
+      {
+        headers: {
+          "Authorization": `Bearer ${process.env.REACT_APP_KEITH_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  } catch (error) {
+    console.log(error.message);
   }
 };

@@ -74,8 +74,6 @@ const LoginModal = props => {
     }
     console.log(registerFormData);
   };
-  console.log(state, "from");
-  console.log(loginFormData);
   return (
     <div className="overlay">
       <div className="modalContainer d-flex flex-column align-items-center justify-content-center">

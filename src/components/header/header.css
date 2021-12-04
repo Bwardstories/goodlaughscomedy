@@ -2,7 +2,7 @@
   position: fixed !important;
   top: 0;
   width: 100%;
-  background: transparent !important;
+  background: rgba(0, 0, 0, 0.7) !important;
   padding-top: 1%;
   padding-left: 3%;
   padding-right: 3%;

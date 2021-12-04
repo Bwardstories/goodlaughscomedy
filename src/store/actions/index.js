@@ -14,3 +14,13 @@ export const logout = () => {
     });
   };
 };
+
+export const loadLiveEvents = liveEventArray => {
+  console.log(liveEventArray, "from actions");
+  return dispatch => {
+    dispatch({
+      type: "LOADLIVEEVENTS",
+      payload: liveEventArray,
+    });
+  };
+};

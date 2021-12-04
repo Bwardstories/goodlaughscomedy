@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import CreateEventForm from "../../components/createEventForm/CreateEventForm";
 import CreateTicketsForm from "../../components/createTicketsForm/CreateTicketsForm";
 import EditTicketsPage from "../../components/editTicketsPage/EditTicketsPage";
@@ -11,7 +10,6 @@ import { retrieveAdminEvents } from "../../apiRequests/eventBriteApi";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Admin = () => {
-  const state = useSelector(state => state);
   const [filteredArray, setFilteredArray] = useState([]);
   // state to control rendering of create event form
   const [creatingEvent, setCreatingEvent] = useState(false);
