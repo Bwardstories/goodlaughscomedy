@@ -7,3 +7,15 @@
   flex-direction: column;
   gap: 2rem;
 }
+
+@media (max-width: 900px) {
+  .liveEventCardWrapper {
+    margin-top: 10%;
+  }
+}
+
+@media (max-width: 600px) {
+  .liveEventCardWrapper {
+    margin-top: 20%;
+  }
+}
