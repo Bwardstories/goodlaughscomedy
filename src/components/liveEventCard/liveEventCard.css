@@ -12,15 +12,45 @@
 .liveEventInfoWrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 600px;
   text-align: center;
   padding: 0 10px 0 10px;
 }
 .liveEventName {
-  font-size: clamp(0.5rem, 2.5vw, 1.2rem);
+  font-size: 150%;
   font-family: "Oswald", sans-serif;
 }
 .liveEventDescription {
   font-family: "Montserrat", sans-serif;
+}
+
+@media (max-width: 1250px) {
+  .liveEventCard {
+    flex-direction: column;
+    align-items: center;
+  }
+  .liveEventImage {
+    width: 700px;
+    margin-bottom: 2%;
+    border: 2px solid black;
+  }
+}
+
+@media (max-width: 750px) {
+  .liveEventImage {
+    width: 400px;
+  }
+  .liveEventInfoWrapper {
+    width: 400px;
+  }
+}
+
+@media (max-width: 450px) {
+  .liveEventImage {
+    width: 300px;
+  }
+  .liveEventInfoWrapper {
+    width: 300px;
+  }
 }
