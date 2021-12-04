@@ -23,13 +23,9 @@ const EventPage = () => {
         .reverse();
       loadLiveEvents(liveEvents);
       // loadLiveEvents(liveEventArray);
-      console.log(liveEventArray);
     }
     fetchEvents();
   }, []);
-
-  console.log(liveEventArray);
-  console.log(state);
 
   return (
     <div className="liveEventCardWrapper">
