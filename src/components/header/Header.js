@@ -54,15 +54,16 @@ const Header = props => {
           <Link
             style={{
               textDecoration: "none",
+              fontSize: "25px",
               color: "white",
               marginTop: "6%",
               padding: "5px",
             }}
             className="navLinks"
             to="/events">
-            Events
+            Current Shows
           </Link>
-          <Link
+          {/* <Link
             style={{
               textDecoration: "none",
               color: "white",
@@ -72,8 +73,8 @@ const Header = props => {
             className="navLinks"
             to="/images">
             Image Gallery
-          </Link>
-          {!state.users.username ? (
+          </Link> */}
+          {/* {!state.users.username ? (
             <p
               className="signupLink"
               style={{
@@ -102,7 +103,7 @@ const Header = props => {
               }}>
               Logout
             </p>
-          )}
+          )} */}
         </Nav>
       </Navbar.Collapse>
     </Navbar>

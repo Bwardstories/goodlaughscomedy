@@ -26,7 +26,7 @@ function App() {
 
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/admin" component={Admin} />
+        {/* <Route path="/admin" component={Admin} /> */}
         <Route path="/events" component={EventPage} />
       </Switch>
     </div>
