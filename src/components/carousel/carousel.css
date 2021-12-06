@@ -1,14 +1,31 @@
 .carousel_container {
   width: 80%;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -45%);
   margin: auto;
   text-align: center;
 }
 
 .carousel_container img {
-  width: 100%;
+  width: 80%;
   height: auto;
+}
+.carouselInfo {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 64px;
+  width: 80%;
+  color: white;
+  background: rgba(68, 68, 68, 0.7);
+  font-family: "Oswald", sans-serif;
+}
+.carouselTicketButton {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  color: gold;
 }

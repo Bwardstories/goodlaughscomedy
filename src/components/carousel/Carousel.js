@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { carouselDB } from "../../assets/carouselDB/carouselDB";
 import { useSelector } from "react-redux";
+import Button from "react-bootstrap/Button";
 import "./carousel.css";
 
 let index = 0;
@@ -39,9 +39,18 @@ const Carousel = () => {
   console.log(state);
   return (
     <div className="carousel_container">
-      <a href={carouselOBJ.url}>
-        <img src={carouselOBJ.logo.url} alt={carouselOBJ.description.text} />
-      </a>
+      <img src={carouselOBJ.logo.url} alt={carouselOBJ.description.text} />
+
+      <p1 className="carouselInfo">
+        CLICK
+        <a
+          href={carouselOBJ.url}
+          variant="success"
+          className="carouselTicketButton">
+          HERE
+        </a>
+        FOR TICKETS
+      </p1>
     </div>
   );
 };

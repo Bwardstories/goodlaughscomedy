@@ -39,9 +39,9 @@ const Header = props => {
             <Link
               style={{
                 textDecoration: "none",
+                fontSize: "25px",
                 color: "white",
-                marginTop: "6%",
-                padding: "5px",
+                paddingLeft: "15px",
               }}
               className="navLinks"
               to="/admin">
@@ -56,32 +56,30 @@ const Header = props => {
               textDecoration: "none",
               fontSize: "25px",
               color: "white",
-              marginTop: "6%",
-              padding: "5px",
+              paddingLeft: "15px",
             }}
             className="navLinks"
             to="/events">
-            Current Shows
+            Get Tickets
           </Link>
-          {/* <Link
+          <Link
             style={{
               textDecoration: "none",
+              fontSize: "25px",
               color: "white",
-              marginTop: "6%",
-              padding: "5px",
+              paddingLeft: "15px",
             }}
-            className="navLinks"
-            to="/images">
-            Image Gallery
-          </Link> */}
-          {/* {!state.users.username ? (
+            className="navLinks">
+            Event Calendar
+          </Link>
+          {!state.users.username ? (
             <p
               className="signupLink"
               style={{
                 textDecoration: "none",
+                fontSize: "25px",
                 color: "white",
-                marginTop: "6%",
-                padding: "5px",
+                paddingLeft: "15px",
               }}
               eventKey={2}
               onClick={() => setLoginVisible(true)}>
@@ -92,9 +90,9 @@ const Header = props => {
               className="signupLink"
               style={{
                 textDecoration: "none",
+                fontSize: "25px",
                 color: "white",
-                marginTop: "6%",
-                padding: "5px",
+                paddingLeft: "15px",
               }}
               eventKey={2}
               onClick={() => {
@@ -103,7 +101,7 @@ const Header = props => {
               }}>
               Logout
             </p>
-          )} */}
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
