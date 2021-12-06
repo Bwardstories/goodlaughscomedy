@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
+import { useSelector } from "react-redux";
+import AdminRoute from "./protectedRoutes/AdminRoute";
 import Home from "./views/home/Home";
 import Admin from "./views/admin/Admin";
 import EventPage from "./views/eventPage/EventPage";
@@ -12,6 +14,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 function App() {
   const [loginVisible, setLoginVisible] = useState(false);
+  const state = useSelector(state => state);
 
   return (
     <div className="app">
@@ -26,7 +29,12 @@ function App() {
 
       <Switch>
         <Route exact path="/" component={Home} />
-        {/* <Route path="/admin" component={Admin} /> */}
+        <AdminRoute
+          exact
+          path="/admin"
+          component={Admin}
+          isAdmin={state.users.isAdmin}
+        />
         <Route path="/events" component={EventPage} />
       </Switch>
     </div>

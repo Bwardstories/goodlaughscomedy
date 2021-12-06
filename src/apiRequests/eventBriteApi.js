@@ -1,7 +1,6 @@
 import axios from "axios";
 import { saveEventToDB } from "./databaseAPI";
 import { success, failure } from "../errorHandling/toastMessages";
-
 export const createEventAPI = async eventFormData => {
   const {
     name,
