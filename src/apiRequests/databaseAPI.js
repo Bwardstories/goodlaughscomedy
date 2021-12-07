@@ -1,9 +1,9 @@
 import axios from "axios";
 import { success, failure } from "../errorHandling/toastMessages";
 
-const baseURL = "https://damp-plateau-92564.herokuapp.com/api/";
+// const baseURL = "https://damp-plateau-92564.herokuapp.com/api/";
 
-// const baseURL = "http://localhost:4000/api/";
+const baseURL = "http://localhost:4000/api/";
 
 export const handleSignupForm = async registerFormData => {
   const { username, password, retypePassword, email } = registerFormData;

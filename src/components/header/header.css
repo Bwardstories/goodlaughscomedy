@@ -25,3 +25,9 @@
     flex-wrap: nowrap !important;
   }
 }
+.headerNavLinks {
+  text-decoration: none !important;
+  font-size: 25px !important;
+  color: white !important;
+  padding-left: 15px !important;
+}

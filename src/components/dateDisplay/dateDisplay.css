@@ -12,7 +12,7 @@
   border: 2px solid black;
 }
 .adminEventCardDate > .calendarMonthWrapper {
-  background: orange;
+  /* background: orange; */
   border-radius: 10px 10px 0px 0px;
 }
 .adminEventCardDate > .calendarDateWrapper {

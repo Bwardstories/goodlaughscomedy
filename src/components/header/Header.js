@@ -36,42 +36,17 @@ const Header = props => {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
           {state.users.isAdmin ? (
-            <Link
-              style={{
-                textDecoration: "none",
-                fontSize: "25px",
-                color: "white",
-                paddingLeft: "15px",
-              }}
-              className="navLinks"
-              to="/admin">
+            <Link className="headerNavLinks" to="/admin">
               Admin
             </Link>
           ) : (
             ""
           )}
 
-          <Link
-            style={{
-              textDecoration: "none",
-              fontSize: "25px",
-              color: "white",
-              paddingLeft: "15px",
-            }}
-            className="navLinks"
-            to="/events">
-            Get Tickets
+          <Link className="headerNavLinks" to="/events">
+            Current Shows
           </Link>
-          <Link
-            style={{
-              textDecoration: "none",
-              fontSize: "25px",
-              color: "white",
-              paddingLeft: "15px",
-            }}
-            className="navLinks">
-            Event Calendar
-          </Link>
+          <Link className="headerNavLinks">Event Calendar</Link>
           {!state.users.username ? (
             <p
               className="signupLink"
