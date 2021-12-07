@@ -35,6 +35,7 @@ const Admin = () => {
   useEffect(() => {
     async function fetchData() {
       let res = await retrieveAdminEvents();
+      console.log(res.data);
       let filteredArray = res.data.events.filter(event => {
         let eventStart = new Date(event.start.local);
         return currentDay.getTime() < eventStart.getTime();
@@ -44,7 +45,7 @@ const Admin = () => {
     fetchData();
   }, []);
 
-  console.log(eventsWithTicketsToEditArray);
+  console.log(eventArray);
   return (
     <div className="adminWrapper">
       {creatingEvent ? (
