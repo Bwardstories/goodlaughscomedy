@@ -28,7 +28,7 @@ const LiveEventCard = props => {
         </div>
         <div>
           <Button variant="success" href={event.url}>
-            Get Tickets
+            View Tickets
           </Button>
         </div>
       </div>

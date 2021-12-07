@@ -14,15 +14,11 @@ const Carousel = () => {
 
   const changeCarousel = () => {
     interval1 = setInterval(function () {
-      console.log(state);
-      console.log(state);
       if (index === state.liveEvents.allLiveEvents.length - 1) {
         index = 0;
-        console.log(state, "from interval");
         return setCarouselOBJ(state.liveEvents.allLiveEvents[index]);
       } else {
         index++;
-        console.log(state, "from interval");
         return setCarouselOBJ(state.liveEvents.allLiveEvents[index]);
       }
     }, 5000);
