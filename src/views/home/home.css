@@ -6,3 +6,10 @@
   height: 100vh;
   padding-top: 6%;
 }
+.homeLogo {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-45%, -50%);
+  width: 75vw;
+}
