@@ -1,6 +1,13 @@
 import axios from "axios";
 import { saveEventToDB } from "./databaseAPI";
 import { success, failure } from "../errorHandling/toastMessages";
+
+// const ORG_ID = process.env.REACT_APP_ORG_ID;
+// const TOKEN = process.env.REACT_APP_MY_TOKEN;
+
+const ORG_ID = process.env.REACT_APP_KEITH_ORG_ID;
+const TOKEN = process.env.REACT_APP_KEITH_TOKEN;
+
 export const createEventAPI = async eventFormData => {
   const {
     name,
@@ -13,13 +20,14 @@ export const createEventAPI = async eventFormData => {
     hide_end_date,
     venue_id,
   } = eventFormData;
+
   // this takes the dates entered on the form and changes them from local time to utc time because that is what is required with the api
   let startDate = new Date(`${start}T${start_time}`).toISOString().slice(0, -5);
   let endDate = new Date(`${end}T${end_time}`).toISOString().slice(0, -5);
   console.log(startDate, endDate);
   try {
     let res = await axios.post(
-      `https://www.eventbriteapi.com/v3/organizations/${process.env.REACT_APP_ORG_ID}/events/`,
+      `https://www.eventbriteapi.com/v3/organizations/${ORG_ID}/events/`,
       {
         "event": {
           "name": {
@@ -58,7 +66,7 @@ export const createEventAPI = async eventFormData => {
       },
       {
         headers: {
-          "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+          "Authorization": `Bearer ${TOKEN}`,
           "Content-Type": "application/json",
         },
       }
@@ -79,10 +87,10 @@ export const createEventAPI = async eventFormData => {
 export const retrieveAdminEvents = () => {
   return axios
     .get(
-      `https://www.eventbriteapi.com/v3/organizations/${process.env.REACT_APP_ORG_ID}/events/?expand=ticket_availability`,
+      `https://www.eventbriteapi.com/v3/organizations/${ORG_ID}/events/?expand=ticket_availability&page_size=1000`,
       {
         headers: {
-          "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+          "Authorization": `Bearer ${TOKEN}`,
           "Content-Type": "application/json",
         },
       }
@@ -119,7 +127,7 @@ export const createTickets = async ticketData => {
       },
       {
         headers: {
-          "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+          "Authorization": `Bearer ${TOKEN}`,
           "Content-Type": "application/json",
         },
       }
@@ -173,7 +181,7 @@ export const publishEvent = publishFormData => {
           },
           {
             headers: {
-              "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+              "Authorization": `Bearer ${TOKEN}`,
               "Content-Type": "application/json",
             },
           }
@@ -183,7 +191,7 @@ export const publishEvent = publishFormData => {
           {},
           {
             headers: {
-              "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+              "Authorization": `Bearer ${TOKEN}`,
               "Content-Type": "application/json",
             },
           }
@@ -198,7 +206,7 @@ export const publishEvent = publishFormData => {
           },
           {
             headers: {
-              "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+              "Authorization": `Bearer ${TOKEN}`,
               "Content-Type": "application/json",
             },
           }
@@ -221,7 +229,7 @@ export const retrieveTicketListApi = async event_id => {
       `https://www.eventbriteapi.com/v3/events/${event_id}/ticket_classes/`,
       {
         headers: {
-          "Authorization": `Bearer ${process.env.REACT_APP_MY_TOKEN}`,
+          "Authorization": `Bearer ${TOKEN}`,
           "Content-Type": "application/json",
         },
       }
@@ -241,10 +249,10 @@ export const retrieveTicketListApi = async event_id => {
 export const getActiveEvents = () => {
   try {
     return axios.get(
-      `https://www.eventbriteapi.com/v3/organizations/${process.env.REACT_APP_KEITH_ORG_ID}/events/?expand=ticket_availability&order_by=start_desc`,
+      `https://www.eventbriteapi.com/v3/organizations/${ORG_ID}/events/?expand=ticket_availability&order_by=start_desc`,
       {
         headers: {
-          "Authorization": `Bearer ${process.env.REACT_APP_KEITH_TOKEN}`,
+          "Authorization": `Bearer ${TOKEN}`,
           "Content-Type": "application/json",
         },
       }
