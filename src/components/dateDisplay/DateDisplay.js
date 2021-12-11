@@ -1,16 +1,21 @@
 import React from "react";
 import "./dateDisplay.css";
 
-const DateDisplay = ({ startTime, dynamicClassName }) => {
+const DateDisplay = ({
+  startTime,
+  dynamicClassName,
+  monthStyle,
+  weekdayStyle,
+}) => {
   // imports start time and class props. the class prop will dynamically assign the class depending on where the date is rendered, to alter it's positioning.
 
   //   formats day from sartTime string
   const day = startTime.toLocaleString("en-US", {
-    weekday: "long",
+    weekday: weekdayStyle,
   });
   // formats month from startTime string
   const month = startTime.toLocaleString("en-US", {
-    month: "long",
+    month: monthStyle,
   });
   // formats date from startTime string
   const date = startTime.toLocaleString("en-US", {

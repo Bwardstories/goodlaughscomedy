@@ -20,9 +20,12 @@
 .signupLink {
   cursor: pointer;
 }
+.signupLink:hover {
+  color: gold !important;
+}
 @media only screen and (max-width: 990px) {
   .navbar {
-    flex-wrap: nowrap !important;
+    /* flex-wrap: nowrap !important; */
   }
 }
 .headerNavLinks {
@@ -30,4 +33,11 @@
   font-size: 25px !important;
   color: white !important;
   padding-left: 15px !important;
+  cursor: pointer;
+}
+.headerNavLinks:hover {
+  color: gold !important;
+}
+.navbar-nav {
+  text-align: center;
 }

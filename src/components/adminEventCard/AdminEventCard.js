@@ -35,6 +35,8 @@ const AdminEventCard = props => {
       )}
       <DateDisplay
         startTime={startTime}
+        weekdayStyle="long"
+        monthStyle="long"
         // passing in classname dynamically to alter the positioning of the DateDisplay component
         dynamicClassName="adminEventCardDate"
       />
