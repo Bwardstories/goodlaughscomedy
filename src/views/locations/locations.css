@@ -1,0 +1,27 @@
+.locationGrid {
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 55%;
+  margin: auto;
+  margin-top: 8%;
+}
+.locationCardWrapper {
+  margin-top: 5%;
+  text-align: center;
+}
+.locationImage {
+  width: 100%;
+  height: 350px;
+}
+.locationTitle {
+  text-align: center;
+  font-size: 2.2rem;
+  font-family: "Montserrat", sans-serif;
+}
+.locationCity {
+  font-size: 1.3rem;
+}
+.locationSummary {
+  font-size: 1.1rem;
+}

@@ -3,6 +3,7 @@ import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import AdminRoute from "./protectedRoutes/AdminRoute";
 import Home from "./views/home/Home";
+import Locations from "./views/locations/Locations";
 import Admin from "./views/admin/Admin";
 import EventPage from "./views/eventPage/EventPage";
 import Header from "./components/header/Header";
@@ -68,6 +69,7 @@ function App() {
           isAdmin={state.users.isAdmin}
         />
         <Route path="/events" component={EventPage} />
+        <Route path="/locations" component={Locations} />
       </Switch>
     </div>
   );
