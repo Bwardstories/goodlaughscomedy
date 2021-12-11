@@ -15,7 +15,12 @@ const Header = props => {
   const dispatch = useDispatch();
   const { login, logout } = bindActionCreators(actions, dispatch);
   const history = useHistory();
-  const { loginVisible, setLoginVisible } = props;
+  const {
+    loginVisible,
+    setLoginVisible,
+    eventCalendarVisible,
+    setEventCalendarVisible,
+  } = props;
 
   return (
     <Navbar
@@ -42,11 +47,26 @@ const Header = props => {
           ) : (
             ""
           )}
-
+          <Link className="headerNavLinks" to="/">
+            Home
+          </Link>
           <Link className="headerNavLinks" to="/events">
             Current Shows
           </Link>
-          <Link className="headerNavLinks">Event Calendar</Link>
+          <Link className="headerNavLinks" to="/locations">
+            Locations
+          </Link>
+          {/* <p
+            className="headerNavLinks"
+            onClick={() => setEventCalendarVisible(!eventCalendarVisible)}>
+            Event Calendar
+          </p> */}
+          <Link className="headerNavLinks" to="/aboutUs">
+            About Us
+          </Link>
+          <Link className="headerNavLinks" to="/contactUs">
+            Contact Us
+          </Link>
           {!state.users.username ? (
             <p
               className="signupLink"

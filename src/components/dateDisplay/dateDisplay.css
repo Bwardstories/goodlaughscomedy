@@ -33,8 +33,13 @@
 .liveEventInfoWrapper {
   flex-shrink: 0;
 }
-@media (max-width: 1250px) {
+@media (max-width: 1450px) {
   .liveEventCardDate {
     display: none;
   }
+}
+.eventCalendarDate > .calendarMonthWrapper {
+  position: absolute;
+  top: 0;
+  right: 2%;
 }
