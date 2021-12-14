@@ -9,7 +9,7 @@
   z-index: 1;
 }
 .logo_icon {
-  width: 120px;
+  width: 110px;
 }
 .navbar-collapse {
   flex-grow: 0 !important;
@@ -19,6 +19,7 @@
 }
 .signupLink {
   cursor: pointer;
+  font-size: 23px !important;
 }
 .signupLink:hover {
   color: gold !important;
@@ -30,7 +31,7 @@
 }
 .headerNavLinks {
   text-decoration: none !important;
-  font-size: 25px !important;
+  font-size: 23px !important;
   color: white !important;
   padding-left: 15px !important;
   cursor: pointer;

@@ -3,6 +3,7 @@ import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import AdminRoute from "./protectedRoutes/AdminRoute";
 import Home from "./views/home/Home";
+import AboutUs from "./views/aboutUs/AboutUs";
 import Locations from "./views/locations/Locations";
 import Admin from "./views/admin/Admin";
 import EventPage from "./views/eventPage/EventPage";
@@ -70,6 +71,7 @@ function App() {
         />
         <Route path="/events" component={EventPage} />
         <Route path="/locations" component={Locations} />
+        <Route path="/aboutUs" component={AboutUs} />
       </Switch>
     </div>
   );
