@@ -1,0 +1,16 @@
+.aboutUsMain {
+  display: flex;
+  height: 100vh;
+}
+.aboutUsWrapper {
+  display: flex;
+  width: 70%;
+  margin: auto;
+}
+.aboutUsImage {
+  width: 600px;
+  height: auto;
+}
+.aboutUsInfo {
+  padding-left: 45px;
+}
