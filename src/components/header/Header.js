@@ -64,9 +64,9 @@ const Header = props => {
           <Link className="headerNavLinks" to="/aboutUs">
             About Us
           </Link>
-          <Link className="headerNavLinks" to="/contactUs">
+          {/* <Link className="headerNavLinks" to="/contactUs">
             Contact Us
-          </Link>
+          </Link> */}
           {!state.users.username ? (
             <p
               className="signupLink"

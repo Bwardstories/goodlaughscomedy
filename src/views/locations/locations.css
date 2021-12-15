@@ -4,7 +4,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   width: 55%;
   margin: auto;
-  margin-top: 8%;
+  padding-top: 8%;
 }
 .locationCardWrapper {
   margin-top: 5%;
