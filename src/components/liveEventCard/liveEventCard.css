@@ -8,6 +8,7 @@
   width: 450px;
   height: auto;
   flex-shrink: 0;
+  image-rendering: optimizeQuality;
 }
 .liveEventInfoWrapper {
   display: flex;
