@@ -19,7 +19,7 @@ const LiveEventCard = props => {
         dynamicClassName="liveEventCardDate"
       />
       <img
-        src={event.logo.url}
+        src={event.logo.original.url}
         alt="comedy banner"
         className="liveEventImage"
       />
