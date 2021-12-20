@@ -17,7 +17,7 @@ export const locations = [
     img: oldTrolleyImg,
     summary:
       "The Old Trolley Theatre, at 102 Old Trolley Road, is a cozy black box theatre. It seats 80. Beer, wine, and light snacks are available.  There are lots of dining options nearby. The theatre is part of Impact Creative Arts Academy.",
-    url: "",
+    url: "https://www.facebook.com/oldtrolleytheatre",
   },
   {
     title: "PARK CIRCLE",

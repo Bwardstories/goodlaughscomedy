@@ -51,7 +51,7 @@ const Header = props => {
             Home
           </Link>
           <Link className="headerNavLinks" to="/events">
-            Current Shows
+            Upcoming Shows
           </Link>
           <Link className="headerNavLinks" to="/locations">
             Locations
