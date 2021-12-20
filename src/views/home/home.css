@@ -5,6 +5,7 @@
   background-attachment: fixed;
   height: 100vh;
   padding-top: 6%;
+  filter: brightness(300%);
   /* background-color: rgb(116, 113, 113); */
 }
 .homeLogo {
