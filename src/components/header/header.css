@@ -3,7 +3,7 @@
   top: 0;
   width: 100%;
   background: rgba(0, 0, 0, 0.7) !important;
-  padding-top: 1%;
+  /* padding-top: 1%; */
   padding-left: 3%;
   padding-right: 3%;
   z-index: 1;
@@ -16,6 +16,7 @@
 }
 .navbar-expand-lg {
   justify-content: space-between !important;
+  align-items: baseline !important;
 }
 .signupLink {
   cursor: pointer;
@@ -41,4 +42,11 @@
 }
 .navbar-nav {
   text-align: center;
+}
+.userLogo {
+  width: 40px;
+  height: auto;
+}
+.userLogo:hover {
+  filter: grayscale();
 }

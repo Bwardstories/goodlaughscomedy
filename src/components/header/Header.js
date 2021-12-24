@@ -1,26 +1,28 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import "./header.css";
-import logo from "../../assets/images/goodlaughslogo.jpg";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useSelector, useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actions } from "../../store/index.";
+import React from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import NavDropdown from 'react-bootstrap/NavDropdown'
+import './header.css'
+import logo from '../../assets/images/goodlaughslogo.jpg'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { useSelector, useDispatch } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actions } from '../../store/index.'
+import userLogo from '../../assets/images/user.png'
 
 const Header = props => {
-  const state = useSelector(state => state);
-  const dispatch = useDispatch();
-  const { login, logout } = bindActionCreators(actions, dispatch);
-  const history = useHistory();
+  const state = useSelector(state => state)
+  const dispatch = useDispatch()
+  const { login, logout, showUserSettings, hideUserSettings } =
+    bindActionCreators(actions, dispatch)
+  const history = useHistory()
   const {
     loginVisible,
     setLoginVisible,
     eventCalendarVisible,
     setEventCalendarVisible,
-  } = props;
+  } = props
 
   return (
     <Navbar
@@ -36,7 +38,7 @@ const Header = props => {
       {state.users.username ? (
         <Navbar.Brand>Welcome Back {state.users.username}</Navbar.Brand>
       ) : (
-        ""
+        ''
       )}
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
@@ -45,7 +47,7 @@ const Header = props => {
               Admin
             </Link>
           ) : (
-            ""
+            ''
           )}
           <Link className="headerNavLinks" to="/">
             Home
@@ -71,10 +73,10 @@ const Header = props => {
             <p
               className="signupLink"
               style={{
-                textDecoration: "none",
-                fontSize: "25px",
-                color: "white",
-                paddingLeft: "15px",
+                textDecoration: 'none',
+                fontSize: '25px',
+                color: 'white',
+                paddingLeft: '15px',
               }}
               eventKey={2}
               onClick={() => setLoginVisible(true)}>
@@ -84,23 +86,23 @@ const Header = props => {
             <p
               className="signupLink"
               style={{
-                textDecoration: "none",
-                fontSize: "25px",
-                color: "white",
-                paddingLeft: "15px",
+                textDecoration: 'none',
+                fontSize: '25px',
+                color: 'white',
+                paddingLeft: '15px',
               }}
               eventKey={2}
               onClick={() => {
-                logout();
-                history.push("/");
+                showUserSettings()
+                console.log(state)
               }}>
-              Logout
+              <img className="userLogo" src={userLogo} alt="user logo" />
             </p>
           )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
