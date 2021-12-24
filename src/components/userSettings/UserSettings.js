@@ -30,7 +30,7 @@ const UserSettings = () => {
           variant="danger">
           Close
         </p>
-        <p className="mailingListButton">Subscribe to Mailing List</p>
+        {/* <p className="mailingListButton">Subscribe to Mailing List</p> */}
         <p
           className="logoutButton"
           onClick={() => {

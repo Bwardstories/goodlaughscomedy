@@ -28,7 +28,6 @@ function App() {
   useEffect(() => {
     async function fetchEvents() {
       let res = await getActiveEvents()
-      console.log(res)
       let liveEvents = await res.data.events
         .filter(event => {
           return event.status === 'live'
