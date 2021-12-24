@@ -1,13 +1,12 @@
-import React from "react";
+import React from 'react'
 
-import DateDisplay from "../dateDisplay/DateDisplay";
-import "./liveEventCard.css";
-import Button from "react-bootstrap/Button";
+import DateDisplay from '../dateDisplay/DateDisplay'
+import './liveEventCard.css'
+import Button from 'react-bootstrap/Button'
 
 const LiveEventCard = props => {
-  const { event } = props;
-  const startTime = new Date(event.start.local);
-  console.log(event);
+  const { event } = props
+  const startTime = new Date(event.start.local)
 
   return (
     <div className="liveEventCard">
@@ -35,7 +34,7 @@ const LiveEventCard = props => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LiveEventCard;
+export default LiveEventCard

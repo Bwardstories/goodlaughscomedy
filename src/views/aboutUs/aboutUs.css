@@ -5,12 +5,29 @@
 .aboutUsWrapper {
   display: flex;
   width: 70%;
+  max-height: 370px;
   margin: auto;
 }
 .aboutUsImage {
-  width: 600px;
+  width: 50%;
   height: auto;
 }
 .aboutUsInfo {
   padding-left: 45px;
+}
+@media (max-width: 1500px) {
+  .aboutUsWrapper {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    margin-top: 8%;
+  }
+  .aboutUsImage {
+    width: 75%;
+  }
+}
+@media (max-width: 1000px) {
+  .aboutUsWrapper {
+    margin-top: 16%;
+  }
 }

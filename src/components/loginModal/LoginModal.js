@@ -1,79 +1,80 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   handleSignupForm,
   handleLoginForm,
-} from "../../apiRequests/databaseAPI";
-import "./loginModal.css";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import { useSelector, useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actions } from "../../store/index.";
+} from '../../apiRequests/databaseAPI'
+import './loginModal.css'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import { useSelector, useDispatch } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actions } from '../../store/index.'
 
 // setting intital state for the form
 const initialState = {
-  username: "",
-  password: "",
-  retypePassword: "",
-  email: "",
+  username: '',
+  password: '',
+  retypePassword: '',
+  email: '',
   isSubmitting: false,
-};
+}
 const initialLogin = {
-  email: "",
-  password: "",
-};
+  email: '',
+  password: '',
+}
 
 const LoginModal = props => {
-  const state = useSelector(state => state);
-  const dispatch = useDispatch();
-  const { login, logout } = bindActionCreators(actions, dispatch);
+  const state = useSelector(state => state)
+  const dispatch = useDispatch()
+  const { login, logout } = bindActionCreators(actions, dispatch)
 
-  const { loginVisible, setLoginVisible } = props;
-  const [registerFormData, setRegisterFormData] = useState(initialState);
-  const [loginFormData, setLoginFormData] = useState(initialLogin);
-  const [showLogin, setShowLogin] = useState(false);
+  const { loginVisible, setLoginVisible } = props
+  const [registerFormData, setRegisterFormData] = useState(initialState)
+  const [loginFormData, setLoginFormData] = useState(initialLogin)
+  const [showLogin, setShowLogin] = useState(false)
 
   const handleChange = event => {
     setRegisterFormData({
       ...registerFormData,
       [event.target.name]: event.target.value,
-    });
-  };
+    })
+  }
 
   const handleLoginChange = event => {
     setLoginFormData({
       ...loginFormData,
       [event.target.name]: event.target.value,
-    });
-  };
+    })
+  }
 
   const handleLogin = event => {
-    event.preventDefault();
+    event.preventDefault()
     try {
-      handleLoginForm(loginFormData, login);
+      console.log(loginFormData, 'here')
+      handleLoginForm(loginFormData, login)
       // login(loginFormData);
-      setLoginVisible(false);
+      setLoginVisible(false)
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
+  }
   const handleSubmit = async event => {
-    event.preventDefault();
-    let res = await handleSignupForm(registerFormData);
-    console.log(res);
+    event.preventDefault()
+    let res = await handleSignupForm(registerFormData)
+    console.log(res)
     if (res !== false) {
-      setLoginVisible(false);
+      setLoginVisible(false)
     }
     if (res === false) {
-      console.log("working");
+      console.log('working')
       setRegisterFormData({
         ...registerFormData,
-        password: "",
-        retypePassword: "",
-      });
+        password: '',
+        retypePassword: '',
+      })
     }
-    console.log(registerFormData);
-  };
+    console.log(registerFormData)
+  }
   return (
     <div className="overlay">
       <div className="modalContainer d-flex flex-column align-items-center justify-content-center">
@@ -83,7 +84,7 @@ const LoginModal = props => {
             <p
               className="closeButton"
               onClick={() => {
-                setLoginVisible(false);
+                setLoginVisible(false)
               }}>
               X
             </p>
@@ -92,8 +93,8 @@ const LoginModal = props => {
               <span
                 className="showLogin"
                 onClick={() => {
-                  setShowLogin(!showLogin);
-                  console.log(showLogin);
+                  setShowLogin(!showLogin)
+                  console.log(showLogin)
                 }}>
                 Here
               </span>
@@ -131,7 +132,7 @@ const LoginModal = props => {
             <p
               className="closeButton"
               onClick={() => {
-                setLoginVisible(false);
+                setLoginVisible(false)
               }}>
               X
             </p>
@@ -140,8 +141,8 @@ const LoginModal = props => {
               <span
                 className="showLogin"
                 onClick={() => {
-                  setShowLogin(!showLogin);
-                  console.log(showLogin);
+                  setShowLogin(!showLogin)
+                  console.log(showLogin)
                 }}>
                 Here
               </span>
@@ -197,7 +198,7 @@ const LoginModal = props => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LoginModal;
+export default LoginModal
