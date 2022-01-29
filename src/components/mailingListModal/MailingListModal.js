@@ -3,13 +3,16 @@ import MailingListForm from '../mailingListForm/MailingListForm'
 import './mailingListModal.css'
 
 const MailingListModal = props => {
-  const { setSubscribeVisible, setModalClosed } = props
+  const { setSubscribeVisible, setModalClosed, setMailingModalVisible } = props
   const [mailingFormVisible, setMailingFormVisible] = useState(false)
   return (
     <div className="overlay">
       <div className="modalWrapper">
         {mailingFormVisible ? (
-          <MailingListForm setSubscribeVisible={setSubscribeVisible} />
+          <MailingListForm
+            setMailingModalVisible={setMailingModalVisible}
+            setSubscribeVisible={setSubscribeVisible}
+          />
         ) : (
           <>
             <p className="modalContent">
@@ -27,6 +30,7 @@ const MailingListModal = props => {
         <p
           className="mailingListCloseButton"
           onClick={() => {
+            setMailingModalVisible(false)
             setSubscribeVisible(false)
             setModalClosed(true)
           }}>

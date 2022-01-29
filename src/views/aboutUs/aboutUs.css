@@ -4,7 +4,7 @@
 }
 .aboutUsWrapper {
   display: flex;
-  width: 70%;
+  width: 1400px;
   max-height: 370px;
   margin: auto;
 }
@@ -21,6 +21,7 @@
     align-items: center;
     height: auto;
     margin-top: 8%;
+    width: 70%;
   }
   .aboutUsImage {
     width: 75%;

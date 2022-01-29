@@ -11,7 +11,7 @@ const initialFormState = {
 }
 
 const MailingListForm = props => {
-  const { setSubscribeVisible } = props
+  const { setSubscribeVisible, setMailingModalVisible } = props
   const [mailingListForm, setMailingListForm] = useState(initialFormState)
 
   const handleChange = event => {
@@ -26,6 +26,7 @@ const MailingListForm = props => {
     handleSubmitMailListForm(mailingListForm).then(() =>
       setSubscribeVisible(false)
     )
+    setMailingModalVisible(false)
   }
 
   return (

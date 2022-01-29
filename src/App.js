@@ -11,6 +11,7 @@ import Header from './components/header/Header'
 import LoginModal from './components/loginModal/LoginModal'
 import UserSettings from './components/userSettings/UserSettings'
 import EventCalendar from './components/eventCalendar/EventCalendar'
+import MailingListModal from './components/mailingListModal/MailingListModal'
 import { getActiveEvents } from './apiRequests/eventBriteApi'
 import { bindActionCreators } from 'redux'
 import { actions } from './store/index.'
@@ -20,40 +21,65 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-toastify/dist/ReactToastify.min.css'
 
 function App() {
+  const [apiSwitch, setApiSwitch] = useState(false)
+  const [subscribeVisible, setSubscribeVisible] = useState(false)
+  const [modalClosed, setModalClosed] = useState(false)
+
+  const [mailingModalVisible, setMailingModalVisible] = useState(false)
   const [loginVisible, setLoginVisible] = useState(false)
   const [eventCalendarVisible, setEventCalendarVisible] = useState(false)
   const state = useSelector(state => state)
   const dispatch = useDispatch()
   const { loadLiveEvents } = bindActionCreators(actions, dispatch)
-  useEffect(() => {
-    async function fetchEvents() {
-      let res = await getActiveEvents()
-      let liveEvents = await res.data.events
-        .filter(event => {
-          return event.status === 'live'
-        })
-        .reverse()
-      loadLiveEvents(liveEvents)
-      // loadLiveEvents(liveEventArray);
-    }
-    fetchEvents()
-  }, [])
 
-  console.log(state)
+  const fetchEventData = async () => {
+    if (apiSwitch) {
+      return
+    }
+
+    let res = await getActiveEvents()
+    let liveEvents = await res.data.events
+      .filter(event => {
+        return event.status === 'live'
+      })
+      .reverse()
+    loadLiveEvents(liveEvents)
+    setApiSwitch(true)
+    console.log('calling the api')
+  }
+
+  useEffect(() => {
+    fetchEventData()
+  }, [])
+  console.log(modalClosed, subscribeVisible, mailingModalVisible)
   return (
     <div className="app">
-      <ToastContainer />
       <Header
+        setMailingModalVisible={setMailingModalVisible}
+        setModalClosed={setModalClosed}
         loginVisible={loginVisible}
         setLoginVisible={setLoginVisible}
         eventCalendarVisible={eventCalendarVisible}
         setEventCalendarVisible={setEventCalendarVisible}
       />
-      {loginVisible && (
+
+      {mailingModalVisible ? (
+        <MailingListModal
+          setModalClosed={setModalClosed}
+          setSubscribeVisible={setSubscribeVisible}
+          setMailingModalVisible={setMailingModalVisible}
+        />
+      ) : (
+        ''
+      )}
+      <ToastContainer />
+      {loginVisible ? (
         <LoginModal
           loginVisible={loginVisible}
           setLoginVisible={setLoginVisible}
         />
+      ) : (
+        ''
       )}
       {state.userSettings.visible && <UserSettings />}
       {eventCalendarVisible && (
@@ -71,7 +97,18 @@ function App() {
           component={Admin}
           isAdmin={state.users.isAdmin}
         />
-        <Route path="/events" component={EventPage} />
+        <Route
+          path="/events"
+          component={() => (
+            <EventPage
+              subscribeVisible={subscribeVisible}
+              setModalClosed={setModalClosed}
+              modalClosed={modalClosed}
+              setSubscribeVisible={setSubscribeVisible}
+              setMailingModalVisible={setMailingModalVisible}
+            />
+          )}
+        />
         <Route path="/locations" component={Locations} />
         <Route path="/aboutUs" component={AboutUs} />
       </Switch>

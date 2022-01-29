@@ -24,7 +24,7 @@ const LiveEventCard = props => {
       />
       <div className="liveEventInfoWrapper">
         <div>
-          <div className="liveEventName">{event.name.html}</div>
+          <div className="liveEventName">{event.name.text}</div>
           <div className="liveEventDescription">{event.summary}</div>
         </div>
         <div>

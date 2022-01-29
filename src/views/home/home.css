@@ -1,5 +1,5 @@
 .homeWrapper {
-  background-image: url("../../assets/images/black.jpg");
+  background-image: url('../../assets/images/black.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -14,4 +14,7 @@
   left: 50%;
   transform: translate(-45%, -50%);
   width: 75vw;
+}
+.mainTitle {
+  visibility: hidden;
 }

@@ -6,7 +6,9 @@
   flex-direction: column;
   gap: 2rem;
 }
-
+.secondaryTitle {
+  visibility: hidden;
+}
 @media (max-width: 900px) {
   .liveEventCardWrapper {
     margin-top: 10%;

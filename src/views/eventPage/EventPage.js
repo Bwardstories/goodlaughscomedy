@@ -5,14 +5,19 @@ import { useSelector } from 'react-redux'
 
 import './eventPage.css'
 
-const EventPage = () => {
+const EventPage = props => {
+  const {
+    subscribeVisible,
+    setSubscribeVisible,
+    modalClosed,
+    setModalClosed,
+    setMailingModalVisible,
+  } = props
   const state = useSelector(state => state)
-  const [subscribeVisible, setSubscribeVisible] = useState(false)
-  const [modalClosed, setModalClosed] = useState(false)
 
   const handleScroll = () => {
     var y = window.scrollY
-    if (y >= 300) {
+    if (y >= 100) {
       setSubscribeVisible(true)
     }
   }
@@ -27,11 +32,13 @@ const EventPage = () => {
         <MailingListModal
           setModalClosed={setModalClosed}
           setSubscribeVisible={setSubscribeVisible}
+          setMailingModalVisible={setMailingModalVisible}
         />
       ) : (
         ''
       )}
       <div className="liveEventCardWrapper">
+        <h2 className="secondaryTitle">Charleston comedy</h2>
         {state.liveEvents.allLiveEvents.map(event => (
           <LiveEventCard event={event} />
         ))}

@@ -22,7 +22,14 @@ const Header = props => {
     setLoginVisible,
     eventCalendarVisible,
     setEventCalendarVisible,
+    setMailingModalVisible,
   } = props
+
+  const handleMailingModal = e => {
+    e.preventDefault()
+    e.stopPropagation()
+    setMailingModalVisible(true)
+  }
 
   return (
     <Navbar
@@ -66,6 +73,19 @@ const Header = props => {
           <Link className="headerNavLinks" to="/aboutUs">
             About Us
           </Link>
+          <p
+            className="signupLink"
+            style={{
+              textDecoration: 'none',
+              fontSize: '25px',
+              color: 'white',
+              paddingLeft: '15px',
+            }}
+            onClick={e => {
+              handleMailingModal(e)
+            }}>
+            Mailing List
+          </p>
           {/* <Link className="headerNavLinks" to="/contactUs">
             Contact Us
           </Link> */}
@@ -79,7 +99,10 @@ const Header = props => {
                 paddingLeft: '15px',
               }}
               eventKey={2}
-              onClick={() => setLoginVisible(true)}>
+              onClick={e => {
+                e.preventDefault()
+                setLoginVisible(true)
+              }}>
               Login/Signup
             </p>
           ) : (

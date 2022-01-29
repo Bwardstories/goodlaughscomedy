@@ -1,15 +1,19 @@
 import axios from 'axios'
 import { success, failure } from '../errorHandling/toastMessages'
 
-const baseURL = 'https://damp-plateau-92564.herokuapp.com/api/'
+const baseURL = 'https://damp-plateau-92564.herokuapp.com/api'
+
+// const baseURL = 'http://localhost:4000/api'
 
 export const handleSubmitMailListForm = async mailingListForm => {
   try {
+    console.log(mailingListForm)
     let res = await axios.post(
       `${baseURL}/mailchimp/addmember`,
       mailingListForm
     )
-    success(`Subscribed Successfully`)
+    success(res.data)
+    console.log(res.data)
     return res.data
   } catch (error) {
     console.log(error)
