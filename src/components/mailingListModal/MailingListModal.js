@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
 import MailingListForm from '../mailingListForm/MailingListForm'
 import './mailingListModal.css'
+import { motion } from 'framer-motion'
 
 const MailingListModal = props => {
   const { setSubscribeVisible, setModalClosed, setMailingModalVisible } = props
   const [mailingFormVisible, setMailingFormVisible] = useState(false)
   return (
     <div className="overlay">
-      <div className="modalWrapper">
+      <motion.div
+        className="modalWrapper"
+        animate={{
+          top: '50%',
+        }}
+        initial={{
+          top: '-50%',
+        }}>
         {mailingFormVisible ? (
           <MailingListForm
             setMailingModalVisible={setMailingModalVisible}
@@ -36,7 +44,7 @@ const MailingListModal = props => {
           }}>
           Close
         </p>
-      </div>
+      </motion.div>
     </div>
   )
 }
