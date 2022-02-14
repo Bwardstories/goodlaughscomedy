@@ -9,6 +9,7 @@ import Admin from './views/admin/Admin'
 import EventPage from './views/eventPage/EventPage'
 import Header from './components/header/Header'
 import LoginModal from './components/loginModal/LoginModal'
+import ContactForm from './components/contactForm/ContactForm'
 import UserSettings from './components/userSettings/UserSettings'
 import EventCalendar from './components/eventCalendar/EventCalendar'
 import MailingListModal from './components/mailingListModal/MailingListModal'
@@ -24,7 +25,7 @@ function App() {
   const [apiSwitch, setApiSwitch] = useState(false)
   const [subscribeVisible, setSubscribeVisible] = useState(false)
   const [modalClosed, setModalClosed] = useState(false)
-
+  const [contactFormVisible, setContactFormVisible] = useState(false)
   const [mailingModalVisible, setMailingModalVisible] = useState(false)
   const [loginVisible, setLoginVisible] = useState(false)
   const [eventCalendarVisible, setEventCalendarVisible] = useState(false)
@@ -45,7 +46,6 @@ function App() {
       .reverse()
     loadLiveEvents(liveEvents)
     setApiSwitch(true)
-    console.log('calling the api')
   }
 
   useEffect(() => {
@@ -58,16 +58,23 @@ function App() {
         setMailingModalVisible={setMailingModalVisible}
         setModalClosed={setModalClosed}
         loginVisible={loginVisible}
+        setContactFormVisible={setContactFormVisible}
         setLoginVisible={setLoginVisible}
         eventCalendarVisible={eventCalendarVisible}
         setEventCalendarVisible={setEventCalendarVisible}
       />
 
-      {mailingModalVisible ? (
-        <MailingListModal
-          setModalClosed={setModalClosed}
-          setSubscribeVisible={setSubscribeVisible}
-          setMailingModalVisible={setMailingModalVisible}
+      <MailingListModal
+        setModalClosed={setModalClosed}
+        setSubscribeVisible={setSubscribeVisible}
+        setMailingModalVisible={setMailingModalVisible}
+        mailingModalVisible={mailingModalVisible}
+      />
+
+      {contactFormVisible ? (
+        <ContactForm
+          setContactFormVisible={setContactFormVisible}
+          contactFormVisible={contactFormVisible}
         />
       ) : (
         ''

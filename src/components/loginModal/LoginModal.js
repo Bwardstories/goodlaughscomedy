@@ -23,6 +23,20 @@ const initialLogin = {
   password: '',
 }
 
+const arrayOfStrings = [5, 6]
+
+let okay = true
+
+function optionalPow(a, b) {
+  if (okay) {
+    console.log(a ** b)
+  } else {
+    console.log(b ** a)
+  }
+}
+
+optionalPow(1, 0)
+
 const LoginModal = props => {
   const state = useSelector(state => state)
   const dispatch = useDispatch()
