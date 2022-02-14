@@ -23,12 +23,18 @@ const Header = props => {
     eventCalendarVisible,
     setEventCalendarVisible,
     setMailingModalVisible,
+    setContactFormVisible,
   } = props
 
   const handleMailingModal = e => {
     e.preventDefault()
     e.stopPropagation()
     setMailingModalVisible(true)
+  }
+
+  const handleContactFormVisible = e => {
+    e.preventDefault()
+    setContactFormVisible(true)
   }
 
   return (
@@ -85,6 +91,19 @@ const Header = props => {
               handleMailingModal(e)
             }}>
             Mailing List
+          </p>
+          <p
+            className="contactLink"
+            style={{
+              textDecoration: 'none',
+              fontSize: '25px',
+              color: 'white',
+              paddingLeft: '15px',
+            }}
+            onClick={e => {
+              handleContactFormVisible(e)
+            }}>
+            Contact Us
           </p>
           {/* <Link className="headerNavLinks" to="/contactUs">
             Contact Us

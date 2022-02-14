@@ -4,17 +4,33 @@ import './mailingListModal.css'
 import { motion } from 'framer-motion'
 
 const MailingListModal = props => {
-  const { setSubscribeVisible, setModalClosed, setMailingModalVisible } = props
+  const {
+    setSubscribeVisible,
+    setModalClosed,
+    setMailingModalVisible,
+    mailingModalVisible,
+  } = props
   const [mailingFormVisible, setMailingFormVisible] = useState(false)
   return (
-    <div className="overlay">
+    <motion.div
+      className="overlay"
+      animate={{
+        visibility: mailingModalVisible ? 'visible' : 'hidden',
+      }}
+      transition={{
+        duration: 3,
+      }}>
       <motion.div
         className="modalWrapper"
         animate={{
-          top: '50%',
+          top: mailingModalVisible ? '50%' : '-50%',
         }}
         initial={{
           top: '-50%',
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 30,
         }}>
         {mailingFormVisible ? (
           <MailingListForm
@@ -38,14 +54,12 @@ const MailingListModal = props => {
         <p
           className="mailingListCloseButton"
           onClick={() => {
-            setMailingModalVisible(false)
-            setSubscribeVisible(false)
-            setModalClosed(true)
+            setMailingModalVisible(!mailingModalVisible)
           }}>
           Close
         </p>
       </motion.div>
-    </div>
+    </motion.div>
   )
 }
 
